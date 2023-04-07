@@ -25,6 +25,6 @@ export class AuthService extends BaseService {
   }
 
   setUser(user: string) {
-    return localStorage.setItem('user', JSON.stringify(user));
+    return localStorage.setItem('user', user);
   }
 }

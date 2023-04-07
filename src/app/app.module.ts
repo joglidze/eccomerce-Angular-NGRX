@@ -17,6 +17,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AuthModule } from './pages/welcome/auth/auth.module';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { AuthComponent } from './pages/welcome/auth/auth.component';
+import { EffectsModule } from '@ngrx/effects';
 
 registerLocaleData(en);
 
@@ -30,8 +31,10 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     IconsProviderModule,
     AuthModule,
+      
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    EffectsModule.forRoot([])
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US },{
     provide:HTTP_INTERCEPTORS,
