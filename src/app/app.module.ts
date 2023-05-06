@@ -16,7 +16,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AuthModule } from './pages/welcome/auth/auth.module';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
-import { AuthComponent } from './pages/welcome/auth/auth.component';
+
 import { EffectsModule } from '@ngrx/effects';
 
 registerLocaleData(en);
