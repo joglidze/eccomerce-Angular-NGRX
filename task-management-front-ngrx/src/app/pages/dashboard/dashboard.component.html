@@ -1,0 +1,20 @@
+<div class="container">
+  <ng-container *ngIf="currentProject$ | async; else noCurrentProject">
+  <div class="sidebar">
+    <ul>
+      <li *ngFor="let board of boards$ |async">
+        <a [routerLink]="['/dashboard', board.id]">{{board.name}}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="content">
+    <router-outlet></router-outlet>
+
+  </div>
+  </ng-container>
+
+  <ng-template #noCurrentProject>
+   <h1> გთხოვთ აირჩიოთ პროექტი
+   </h1>
+  </ng-template>
+</div>

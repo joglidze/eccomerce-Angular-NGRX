@@ -1,0 +1,28 @@
+<div class="container">
+  <div>
+    <button [routerLink]="['/']">Home</button>
+    <button [routerLink]="['/dashboard']">Dashboard</button>
+    <button [routerLink]="['/backlog']">Backlog</button>
+    <button [routerLink]="['/users']" [appPermissions]="['user:list']">Users</button>
+    <button [routerLink]="['/roles']">Roles</button>
+  </div>
+  <div>
+    <ng-container *ngIf="isAuth; else notAuth">
+      <button [routerLink]="['/projects/add']">Add project</button>
+      <select [ngModel]="currentProject?.id" (ngModelChange)="selectProject($event)">
+        <option *ngFor="let project of projects$ | async" [value]="project.id">
+          {{project.name}}
+        </option>
+      </select>
+      <ng-container *ngIf="currentProject">
+        <button [routerLink]="['/projects/setting']">Settings</button>
+      </ng-container>
+      <button (click)="logout()">Logout</button>
+
+    </ng-container>
+    <ng-template #notAuth>
+      <button [routerLink]="['/auth']">login</button>
+      <button [routerLink]="['/auth/register']">Register</button>
+    </ng-template>
+  </div>
+</div>
