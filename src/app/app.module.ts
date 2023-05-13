@@ -14,11 +14,12 @@ import { IconsProviderModule } from './icons-provider.module';
 
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { AuthModule } from './pages/welcome/auth/auth.module';
+
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 
 import { EffectsModule } from '@ngrx/effects';
-import { WelcomeModule } from './pages/welcome/welcome.module';
+import { WelcomeModule } from './pages/welcome.module';
+
 
 registerLocaleData(en);
 

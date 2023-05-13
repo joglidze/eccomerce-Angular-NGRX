@@ -1,0 +1,119 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light p-3">
+    <div class="container-fluid justify-content-around">
+      <div>
+        <a
+          class="navbar-brand me-2 mb-1 d-flex align-items-center"
+          routerLink="/"
+        >
+          <img
+            src="https://theme-assets.ecommercedns.uk/9/68509/images/logo.svg"
+            height="100"
+            alt="farm bro logo"
+            loading="lazy"
+          />
+        </a>
+      </div>
+      <div class="input-group rounded" style="width: 30%">
+        <input
+          type="search"
+          style="border-color: #6ba342 !important"
+          class="form-control rounded-1 border border-4"
+          placeholder="Search"
+          aria-label="Search"
+          aria-describedby="search-addon"
+        />
+
+        <span
+          nz-icon
+          nzType="search"
+          nzTheme="outline"
+          class="input-group-text border-0 btn-outline-secondary"
+          id="search-addon"
+        ></span>
+      </div>
+
+      <ng-container *ngIf="isLoggedOut$ | async">
+        <button type="button" class="btn btn-outline-primary" routerLink="auth">
+          Register
+        </button>
+      </ng-container>
+      <ng-container *ngIf="isLoggedIn$ | async as user">
+        <ul class="navbar-nav flex-row">
+          <li class="nav-item m-3 me-lg-1">
+            <a>
+              <nz-avatar
+                class="nav-link d-sm-flex align-items-md-center"
+                class="align-items-md-center"
+                nzText="{{ user.firstName | uppercase }}"
+                [nzSize]="50"
+              ></nz-avatar>
+            </a>
+          </li>
+
+          <li class="nav-item m-3 me-lg-1">
+            <a class="nav-link d-flex flex-row-reverse">
+              <nz-badge
+                *ngIf="cartArray"
+                [nzCount]="cartNumber.length"
+                class="d-flex flex-row-reverse align-items-center"
+              >
+                <span nz-icon nzType="down"></span
+                ><span
+                  routerLink="cart"
+                  nz-dropdown
+                  [nzDropdownMenu]="menu"
+                  nz-icon
+                  nzType="shopping-cart"
+                  nzTheme="outline"
+                  style="font-size: 50px"
+                >
+                </span>
+              </nz-badge>
+
+              <nz-dropdown-menu #menu="nzDropdownMenu">
+                <ul nz-menu *ngFor="let product of cartArray">
+                  <li nz-menu-item (click)="log('1st menu item')">
+                    <nz-card style="width: 400px; margin-top: 16px">
+                      <div
+                        class="d-flex justify-content-between w-100 align-items-center"
+                      >
+                        <div>
+                          <img
+                            src="{{ product.item.image }}"
+                            alt=""
+                            width="100px"
+                          />
+                        </div>
+                        <div>
+                          <p>{{ product.quantity }}</p>
+                        </div>
+                        <div>
+                          <h5>{{ product.item.name }}</h5>
+                          <p>{{ product.item.price | currency }}</p>
+                        </div>
+                      </div>
+                    </nz-card>
+                  </li>
+                </ul>
+              </nz-dropdown-menu>
+            </a>
+          </li>
+          <li class="nav-item m-3 me-lg-1">
+            <a (click)="onLogout()">
+              <span
+                nz-icon
+                nzType="logout"
+                nzTheme="outline"
+                style="font-size: 45px"
+              ></span>
+            </a>
+          </li>
+        </ul>
+      </ng-container>
+    </div>
+  </nav>
+  <div style="z-index: 5">
+    <app-category></app-category>
+  </div>
+</header>

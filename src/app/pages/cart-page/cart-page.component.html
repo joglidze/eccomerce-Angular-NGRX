@@ -1,0 +1,29 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Product</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Total Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of cartProducts">
+      <th scope="row">
+        <img [src]="product.item.image" alt="" width="200px" />
+      </th>
+      <td>{{ product.item.name }}</td>
+      <td>{{ product.item.price | currency }}</td>
+      <td>{{ product.quantity }}</td>
+      <td>{{ product.total | currency }}</td>
+
+      <td>
+        <button class="btn btn-danger" (click)="deleteCart(product.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+  <div>
+    <h1>Total:{{ cartSum | currency }}</h1>
+  </div>
+</table>

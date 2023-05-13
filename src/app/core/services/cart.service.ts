@@ -3,7 +3,6 @@ import { BaseService } from './base.service';
 import { Observable } from 'rxjs';
 import { Cart } from '../interfaces/cart';
 import { ProductResponse } from '../interfaces/product';
-import { deleteProduct } from 'src/app/pages/welcome/cart-page/Store/cart.actions';
 
 @Injectable({
   providedIn: 'root',

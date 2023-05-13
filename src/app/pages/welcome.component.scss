@@ -1,0 +1,43 @@
+:host {
+  text-align: center;
+  width: 100%;
+}
+
+nz-footer {
+  line-height: 1.5;
+}
+
+nz-sider {
+  color: #fff;
+  line-height: 120px;
+}
+
+nz-content {
+  display: block;
+  color: #fff;
+}
+
+nz-layout {
+  margin-bottom: 48px;
+}
+
+nz-layout nz-layout,
+nz-layout:last-child {
+  margin: 0;
+}
+
+.ant-layout-header {
+  padding: 0px;
+  margin-bottom: 162px;
+}
+
+[nz-carousel-content] {
+  text-align: center;
+
+  overflow: hidden;
+}
+
+h3 {
+  margin-bottom: 0;
+  user-select: none;
+}
