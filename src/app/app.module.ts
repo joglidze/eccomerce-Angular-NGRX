@@ -18,6 +18,7 @@ import { AuthModule } from './pages/welcome/auth/auth.module';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 
 import { EffectsModule } from '@ngrx/effects';
+import { WelcomeModule } from './pages/welcome/welcome.module';
 
 registerLocaleData(en);
 
@@ -30,17 +31,20 @@ registerLocaleData(en);
     HttpClientModule,
     BrowserAnimationsModule,
     IconsProviderModule,
-    AuthModule,
-      
+    WelcomeModule,
+
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US },{
-    provide:HTTP_INTERCEPTORS,
-    useClass:AuthInterceptor,
-    multi:true,
-  }],
+  providers: [
+    { provide: NZ_I18N, useValue: en_US },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

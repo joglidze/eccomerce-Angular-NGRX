@@ -1,5 +1,5 @@
 export interface ProductResponse {
-  id: number;
+  id: string;
   total: number;
   quantity: number;
   item: Item;
