@@ -1,11 +1,12 @@
-import { createReducer, on } from "@ngrx/store";
-import { ProductResponse } from "src/app/core/interfaces/product";
-import { dropDown, products } from "./home.actions";
-import { addCart } from "./home.actions";
-import { state } from "@angular/animations";
-import { ofType } from "@ngrx/effects";
+import { createReducer, on } from '@ngrx/store';
+import { ProductResponse } from 'src/app/core/interfaces/product';
+import { dropDown, editProduct, products } from './home.actions';
+import { addCart } from './home.actions';
+import { state } from '@angular/animations';
+import { ofType } from '@ngrx/effects';
+import { ProductPost } from 'src/app/core/interfaces/productPost';
 
-export const homeFeaturekey = "home";
+export const homeFeaturekey = 'home';
 
 export interface HomeState {
   products?: ProductResponse;
@@ -27,7 +28,7 @@ export interface State {
   products: any;
 }
 
-export const cartFeaturekey = "cart";
+export const cartFeaturekey = 'cart';
 export const cartState: any = {
   cart: undefined,
 };
@@ -40,7 +41,7 @@ export const cartReducer = createReducer(
   })
 );
 
-export const dropDownKey = "dropDown";
+export const dropDownKey = 'dropDown';
 
 export const dropdownState: ProductResponse[] | any = {
   dropDown: [],
@@ -51,5 +52,19 @@ export const dropDownReducer = createReducer(
   on(dropDown, (state, dropdownitems) => {
     console.log(state);
     return { dropDown: [...state.dropDown, dropdownitems.dropdown] };
+  })
+);
+
+export const editableKey = 'edit';
+
+export const editProductState: ProductPost | any = {
+  editTarget: undefined,
+};
+
+export const editStateReduce = createReducer(
+  editProductState,
+  on(editProduct, (state, editproduct) => {
+    console.log(state);
+    return { editproduct: editproduct.productEditable };
   })
 );

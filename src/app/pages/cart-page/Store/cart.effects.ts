@@ -1,8 +1,8 @@
-import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { deleteProduct } from "./cart.actions";
-import { Injectable } from "@angular/core";
-import { exhaustMap, switchMap, tap } from "rxjs";
-import { CartService } from "src/app/core/services/cart.service";
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { deleteProduct } from './cart.actions';
+import { Injectable } from '@angular/core';
+import { exhaustMap, switchMap, tap } from 'rxjs';
+import { CartService } from 'src/app/core/services/cart.service';
 
 @Injectable()
 export class CartPageEffect {
@@ -12,6 +12,7 @@ export class CartPageEffect {
       this.action$.pipe(
         ofType(deleteProduct),
         switchMap((action) => {
+          console.log(action);
           return this.cartService.deleteProduct(action.productId);
         })
       ),

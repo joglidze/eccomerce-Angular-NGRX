@@ -1,16 +1,16 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { Store, select } from "@ngrx/store";
-import { Subject, takeUntil, tap } from "rxjs";
-import { ProductPost } from "src/app/core/interfaces/productPost";
-import { cartState } from "../home/store/home.select";
-import { ProductResponse } from "src/app/core/interfaces/product";
-import { deleteProduct } from "./Store/cart.actions";
-import { addCart } from "../home/store/home.actions";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { Subject, takeUntil, tap } from 'rxjs';
+import { ProductPost } from 'src/app/core/interfaces/productPost';
+import { cartState } from '../home/store/home.select';
+import { ProductResponse } from 'src/app/core/interfaces/product';
+import { deleteProduct } from './Store/cart.actions';
+import { addCart, dropDown } from '../home/store/home.actions';
 
 @Component({
-  selector: "app-cart-page",
-  templateUrl: "./cart-page.component.html",
-  styleUrls: ["./cart-page.component.scss"],
+  selector: 'app-cart-page',
+  templateUrl: './cart-page.component.html',
+  styleUrls: ['./cart-page.component.scss'],
 })
 export class CartPageComponent implements OnInit, OnDestroy {
   cartProducts?: ProductResponse[];
@@ -36,8 +36,10 @@ export class CartPageComponent implements OnInit, OnDestroy {
     this.cartProducts = this.cartProducts?.filter((product) => {
       return productId !== product.id;
     });
-    
+
     this.TotalCost();
+    this.store.dispatch(addCart({ cart: this.cartProducts }));
+    this.store.dispatch(dropDown({dropdown:this.cartProducts}))
     this.store.dispatch(deleteProduct({ productId }));
   }
 

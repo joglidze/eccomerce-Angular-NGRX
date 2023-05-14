@@ -12,15 +12,18 @@ export interface Item {
   description: string;
   image: string;
   price: number;
-  category: Category;
+  category: CategoryProduct;
   createdAt: Date;
   updatedAt: Date;
   deletedAt: Date;
 }
 
-export interface Category {
+export interface CategoryProduct {
   id: number;
   name: string;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: null;
 }
 
 export interface User {

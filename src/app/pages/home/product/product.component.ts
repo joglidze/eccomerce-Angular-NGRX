@@ -1,26 +1,32 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { Store, select } from "@ngrx/store";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
 import {
   dropdownState,
   productsState,
   selectdropdownState,
-} from "../store/home.select";
-import { ProductPost } from "src/app/core/interfaces/productPost";
-import { addCart, dropDown } from "../store/home.actions";
-import { CartService } from "src/app/core/services/cart.service";
-import { ProductResponse } from "src/app/core/interfaces/product";
-import { Subject, takeUntil } from "rxjs";
+} from '../store/home.select';
+import { ProductPost } from 'src/app/core/interfaces/productPost';
+import { addCart, dropDown, editProduct } from '../store/home.actions';
+import { CartService } from 'src/app/core/services/cart.service';
+import { CategoryProduct, ProductResponse } from 'src/app/core/interfaces/product';
+import { Observable, Subject, filter, takeUntil, tap } from 'rxjs';
+
+
 
 @Component({
-  selector: "app-product",
-  templateUrl: "./product.component.html",
-  styleUrls: ["./product.component.scss"],
+  selector: 'app-product',
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit, OnDestroy {
   productss: any;
   sub$ = new Subject();
-
-  constructor(private store: Store, private cartService: CartService) {}
+  
+  constructor(
+    private store: Store,
+    private cartService: CartService,
+    
+  ) {}
 
   ngOnInit(): void {
     this.selectProducts();
@@ -59,6 +65,22 @@ export class ProductComponent implements OnInit, OnDestroy {
         this.store.dispatch(addCart({ cart: res }));
       });
   }
+
+  onEdit(product: any) {
+    this.store
+      .pipe(
+        select(selectdropdownState),
+        filter((state) => {
+          if (state !== product) {
+            this.store.dispatch(editProduct({ productEditable: product }));
+            
+            return product;
+          }
+        })
+      )
+      .subscribe();
+  }
+
   ngOnDestroy(): void {
     this.sub$.next(null);
     this.sub$.complete();

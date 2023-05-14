@@ -15,4 +15,7 @@ export class ProductService extends BaseService {
   postProducts(load: ProductPost): Observable<ProductPost> {
     return this.post<ProductPost>('product', load);
   }
+  editProduct(productId: string, product:ProductPost): Observable<ProductPost> {
+    return this.put<ProductPost>(`product/${productId}`,product);
+  }
 }

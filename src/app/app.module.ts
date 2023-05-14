@@ -20,7 +20,6 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { EffectsModule } from '@ngrx/effects';
 import { WelcomeModule } from './pages/welcome.module';
 
-
 registerLocaleData(en);
 
 @NgModule({

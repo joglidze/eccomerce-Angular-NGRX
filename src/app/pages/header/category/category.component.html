@@ -20,6 +20,7 @@
         nz-button
         nz-popover
         [nzPopoverContent]="contentTemplate"
+        [nzPopoverVisible]="true"
         nzPopoverPlacement="bottom"
       >
         Brands
@@ -31,10 +32,10 @@
   </ul>
   <ng-template #contentTemplate>
     <div class="d-flex">
-      <ul class="navbar-nav m-3">
+      <ul class="navbar-nav m-3"*ngFor="let category of categories$">
         <li><a href="" class="nav-link active">Boots</a></li>
         <hr />
-        <li><a href="" class="nav-link">Dealer Boots</a></li>
+        <li > {{ category[0]}}</li>
         <li><a href="" class="nav-link">Safety Boots</a></li>
         <li><a href="" class="nav-link">Non-Safety Boots</a></li>
         <li><a href="" class="nav-link">Laced Boots</a></li>

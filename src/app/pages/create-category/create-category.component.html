@@ -1,0 +1,19 @@
+<div>
+  <form
+    [formGroup]="categoryForm"
+    (ngSubmit)="onSubmit()"
+    class="input-group mb-3 w-50 m-auto mt-2"
+  >
+    <input
+      type="text"
+      class="form-control me-2"
+      placeholder="Write category"
+      aria-label="Username"
+      aria-describedby="basic-addon1"
+      formControlName="name"
+    />
+    <div>
+      <button class="btn btn-primary" type="submit">add Category</button>
+    </div>
+  </form>
+</div>

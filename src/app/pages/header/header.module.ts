@@ -14,7 +14,7 @@ import { NzCardModule } from "ng-zorro-antd/card";
   declarations: [HeaderComponent, CategoryComponent],
   imports: [
     CommonModule,
-
+    
     NzAvatarModule,
     NzBadgeModule,
     NzDropDownModule,
