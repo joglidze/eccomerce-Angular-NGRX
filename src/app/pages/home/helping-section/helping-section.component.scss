@@ -1,0 +1,51 @@
+.bg-image {
+  background-image: url(https://theme-assets.ecommercedns.uk/9/68509/images/about-section-updated-2.jpg?v=228);
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+}
+
+.main-cont {
+  h2 {
+    color: #333c42;
+
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+  .lead {
+    color: #6ba342;
+
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin: 15px 0 10px;
+    font-family: Roboto, sans-serif;
+  }
+  p {
+    font-size: 1.2rem;
+    line-height: 1.4;
+    margin: 15px 0 10px;
+    color: black;
+  }
+
+  .button.simple {
+    border-radius: 0;
+    padding: 1rem 1.5rem;
+    text-transform: uppercase;
+  }
+  .button {
+    background-color: #6ba342;
+    border-radius: 1em;
+    box-shadow: none;
+    color: #fff;
+    font-size: 16px;
+    font-size: 1.2307692308rem;
+    text-transform: lowercase;
+  }
+  a {
+    text-decoration: none;
+  }
+}

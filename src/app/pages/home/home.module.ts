@@ -23,9 +23,10 @@ import { RouterModule } from '@angular/router';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { EffectsModule } from '@ngrx/effects';
 import { CartPageEffect } from '../cart-page/Store/cart.effects';
+import { HelpingSectionComponent } from './helping-section/helping-section.component';
 
 @NgModule({
-  declarations: [HomeComponent, CarouselComponent, ProductComponent],
+  declarations: [HomeComponent, CarouselComponent, ProductComponent, HelpingSectionComponent],
   imports: [
     FormsModule,
     CommonModule,
