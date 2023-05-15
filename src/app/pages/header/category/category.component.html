@@ -15,12 +15,13 @@
       <a class="nav-link" href="#">Offers</a>
     </li>
     <li class="nav-item">
+      <!-- [nzPopoverVisible]="true" -->
       <a
         class="nav-link active"
         nz-button
+        
         nz-popover
         [nzPopoverContent]="contentTemplate"
-        [nzPopoverVisible]="true"
         nzPopoverPlacement="bottom"
       >
         Brands
@@ -32,16 +33,24 @@
   </ul>
   <ng-template #contentTemplate>
     <div class="d-flex">
-      <ul class="navbar-nav m-3"*ngFor="let category of categories$">
+      <ul class="navbar-nav m-3">
         <li><a href="" class="nav-link active">Boots</a></li>
         <hr />
-        <li > {{ category[0]}}</li>
-        <li><a href="" class="nav-link">Safety Boots</a></li>
-        <li><a href="" class="nav-link">Non-Safety Boots</a></li>
-        <li><a href="" class="nav-link">Laced Boots</a></li>
-        <li><a href="" class="nav-link">Safety Trainers</a></li>
-        <li><a href="" class="nav-link">Kids Boots</a></li>
-        <li><a href="" class="nav-link">Kids Boots</a></li>
+        <li
+          *ngFor="let category of categories"
+          class="d-flex align-items-center"
+        >
+          <a href="" class="nav-link">{{ category.name }}</a>
+       
+          <span
+            nz-icon
+            nzType="close"
+            nzTheme="outline"
+            class="text-danger fs-5"
+            (click)="onDelete(category.id)"
+            style="cursor: pointer"
+          ></span>
+        </li>
       </ul>
       <ul class="navbar-nav m-3">
         <li><a href="" class="nav-link active">Kidswear</a></li>
@@ -101,6 +110,9 @@
         <li><a href="" class="nav-link">Safety Trainers</a></li>
         <li><a href="" class="nav-link">Kids Boots</a></li>
         <li><a href="" class="nav-link">Kids Boots</a></li>
+        <button class="btn btn-primary" routerLink="createCategory">
+          Add category
+        </button>
       </ul>
     </div>
   </ng-template>

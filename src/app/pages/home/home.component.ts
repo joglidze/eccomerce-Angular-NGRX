@@ -18,11 +18,9 @@ import { selectCategoryState } from '../create-category/Store/category.select';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   sub$ = new Subject();
- 
+
   ngOnInit(): void {
     this.productsInState();
-    this.categoryInState();
-    
   }
   constructor(
     private productService: ProductService,
@@ -45,19 +43,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       });
   }
 
-  categoryInState() {
-    this.categoryService
-      .getCategory()
-      .pipe(
-        takeUntil(this.sub$),
-        switchMap((data) => {
-          const names = data.map((category) => category.name);
-          console.log(names);
-          return of(categoryAction({ name: names }));
-        })
-      )
-      .subscribe((action) => this.store.dispatch(action));
-  }
   ngOnDestroy(): void {
     this.sub$.next(null);
     this.sub$.complete();

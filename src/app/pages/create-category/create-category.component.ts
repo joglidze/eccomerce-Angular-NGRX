@@ -19,4 +19,6 @@ export class CreateCategoryComponent {
     console.log(this.categoryForm.value);
     this.store.dispatch(categoryAction({ name:this.categoryForm.value }));
   }
+
+
 }

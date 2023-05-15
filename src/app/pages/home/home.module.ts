@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {  CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { CarouselComponent } from './carousel/carousel.component';
@@ -29,7 +29,7 @@ import { CartPageEffect } from '../cart-page/Store/cart.effects';
   imports: [
     FormsModule,
     CommonModule,
-
+    
     RouterModule,
     NzIconModule,
     NzCarouselModule,
@@ -42,6 +42,7 @@ import { CartPageEffect } from '../cart-page/Store/cart.effects';
     StoreModule.forFeature(dropDownKey, dropDownReducer),
     StoreModule.forFeature(editableKey, editStateReduce),
   ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   exports: [HomeComponent],
 })
 export class HomeModule {}

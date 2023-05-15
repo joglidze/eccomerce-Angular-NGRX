@@ -8,10 +8,12 @@ import {
 import { ProductPost } from 'src/app/core/interfaces/productPost';
 import { addCart, dropDown, editProduct } from '../store/home.actions';
 import { CartService } from 'src/app/core/services/cart.service';
-import { CategoryProduct, ProductResponse } from 'src/app/core/interfaces/product';
+import {
+  CategoryProduct,
+  ProductResponse,
+} from 'src/app/core/interfaces/product';
 import { Observable, Subject, filter, takeUntil, tap } from 'rxjs';
-
-
+import { register } from 'swiper/element/bundle';
 
 @Component({
   selector: 'app-product',
@@ -21,15 +23,12 @@ import { Observable, Subject, filter, takeUntil, tap } from 'rxjs';
 export class ProductComponent implements OnInit, OnDestroy {
   productss: any;
   sub$ = new Subject();
-  
-  constructor(
-    private store: Store,
-    private cartService: CartService,
-    
-  ) {}
+
+  constructor(private store: Store, private cartService: CartService) {}
 
   ngOnInit(): void {
     this.selectProducts();
+    register();
   }
 
   selectProducts() {
@@ -73,7 +72,7 @@ export class ProductComponent implements OnInit, OnDestroy {
         filter((state) => {
           if (state !== product) {
             this.store.dispatch(editProduct({ productEditable: product }));
-            
+
             return product;
           }
         })

@@ -1,79 +1,89 @@
 <div class="row row-cols-1 row-cols-md-5 w-100 text-start">
-  <div class="card m-4" *ngFor="let product of productss">
-    <div>
-      <img [src]="product.image" width="100%" class="mb-1 mx-auto" />
-      <div class="w-full">
-        <div>
-          <h5>{{ product.name }}</h5>
-        </div>
+  <swiper-container
+    slides-per-view="3"
+    class="w-75"
+    navigation="true"
+    rewind="true" 
+    pagination="true"
+  >
+    <swiper-slide *ngFor="let product of productss">
+      <div class="m-2">
+        <img [src]="product.image" width="100%" class="mb-1 mx-auto" />
+        <div class="w-full">
+          <div>
+            <h5>{{ product.name }}</h5>
+          </div>
 
-        <div class="d-flex justify-content-between">
-          <div>
-            <span class="text-red-400"
-              ><p>{{ product.price | currency }}</p>
-            </span>
-            <span
-              nz-icon
-              nzType="star"
-              nzTheme="fill"
-              style="color: #b2b2b2"
-            ></span>
-            <span
-              nz-icon
-              nzType="star"
-              nzTheme="fill"
-              style="color: #b2b2b2"
-            ></span>
-            <span
-              nz-icon
-              nzType="star"
-              nzTheme="fill"
-              style="color: #b2b2b2"
-            ></span>
-            <span
-              nz-icon
-              nzType="star"
-              nzTheme="fill"
-              style="color: #b2b2b2"
-            ></span>
-            <span nz-icon nzType="star" nzTheme="fill" style="color: #b2b2b2">
-            </span>
-            <p>0</p>
-          </div>
-          <div>
-            <button class="btn btn-outline-success" (click)="addCart(product)">
+          <div class="d-flex justify-content-between">
+            <div>
+              <span class="text-red-400"
+                ><p>{{ product.price | currency }}</p>
+              </span>
               <span
                 nz-icon
-                nzType="shopping-cart"
-                nzTheme="outline"
-                style="font-size: 32px; color: #08c"
-              ></span>
-            </button>
-            <br />
-            <button
-              class="btn btn-outline-success mt-2"
-              routerLink="createProduct"
-              (click)="onEdit(product)"
-            >
-              <span
-                nz-icon
-                nzType="setting"
+                nzType="star"
                 nzTheme="fill"
-                style="font-size: 32px; color: #08c"
+                style="color: #b2b2b2"
               ></span>
-            </button>
+              <span
+                nz-icon
+                nzType="star"
+                nzTheme="fill"
+                style="color: #b2b2b2"
+              ></span>
+              <span
+                nz-icon
+                nzType="star"
+                nzTheme="fill"
+                style="color: #b2b2b2"
+              ></span>
+              <span
+                nz-icon
+                nzType="star"
+                nzTheme="fill"
+                style="color: #b2b2b2"
+              ></span>
+              <span nz-icon nzType="star" nzTheme="fill" style="color: #b2b2b2">
+              </span>
+              <p>0</p>
+            </div>
+            <div>
+              <button
+                class="btn btn-outline-success"
+                (click)="addCart(product)"
+              >
+                <span
+                  nz-icon
+                  nzType="shopping-cart"
+                  nzTheme="outline"
+                  style="font-size: 32px; color: #08c"
+                ></span>
+              </button>
+              <br />
+              <button
+                class="btn btn-outline-success mt-2"
+                routerLink="createProduct"
+                (click)="onEdit(product)"
+              >
+                <span
+                  nz-icon
+                  nzType="setting"
+                  nzTheme="fill"
+                  style="font-size: 32px; color: #08c"
+                ></span>
+              </button>
+            </div>
           </div>
-        </div>
-      </div>
+        </div></div
+    ></swiper-slide>
+    <div class="card m-4">
+      <button
+        type="button"
+        class="btn btn-primary btn-lg rounded-circle w-25 m-auto"
+        routerLink="createProduct"
+      >
+        <h1>+</h1>
+      </button>
     </div>
-  </div>
-  <div class="card m-4">
-    <button
-      type="button"
-      class="btn btn-primary btn-lg rounded-circle w-25 m-auto"
-      routerLink="createProduct"
-    >
-      <h1>+</h1>
-    </button>
-  </div>
+  </swiper-container>
 </div>

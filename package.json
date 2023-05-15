@@ -23,6 +23,7 @@
     "@ngrx/store-devtools": "^15.4.0",
     "ng-zorro-antd": "^15.0.3",
     "rxjs": "~7.8.0",
+    "swiper": "^9.3.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },
