@@ -1,14 +1,32 @@
-<div class="row row-cols-1 row-cols-md-5 w-100 text-start">
+<div class="row row-cols-1 row-cols-md-5 w-100 text-start p-2">
   <swiper-container
     slides-per-view="3"
     class="w-75"
+    rewind="true"
     navigation="true"
-    rewind="true" 
     pagination="true"
   >
-    <swiper-slide *ngFor="let product of productss">
-      <div class="m-2">
-        <img [src]="product.image" width="100%" class="mb-1 mx-auto" />
+    <div class="card m-4">
+      <button
+        type="button"
+        class="btn btn-primary btn-lg rounded-circle w-50 m-auto"
+        routerLink="createProduct"
+      >
+        <h1>+</h1>
+      </button>
+    </div>
+    <swiper-slide
+      *ngFor="let product of productss"
+      aria-controls="swiper-wrapper-105267bf3ead58ec2"
+    >
+      <div class="m-2 m-auto" style="width: 70%">
+        <div class="w-100">
+          <img
+            [src]="product.image"
+            class="mb-1 w-100 rounded-2"
+            (click)="onProduct(product.id, product)"
+          />
+        </div>
         <div class="w-full">
           <div>
             <h5>{{ product.name }}</h5>
@@ -45,45 +63,29 @@
               ></span>
               <span nz-icon nzType="star" nzTheme="fill" style="color: #b2b2b2">
               </span>
-              <p>0</p>
             </div>
             <div>
-              <button
-                class="btn btn-outline-success"
+              <span
                 (click)="addCart(product)"
-              >
-                <span
-                  nz-icon
-                  nzType="shopping-cart"
-                  nzTheme="outline"
-                  style="font-size: 32px; color: #08c"
-                ></span>
-              </button>
+                nz-icon
+                nzType="shopping-cart"
+                nzTheme="outline"
+                class="icon p-1 rounded-2"
+              ></span>
+
               <br />
-              <button
-                class="btn btn-outline-success mt-2"
+
+              <span
                 routerLink="createProduct"
                 (click)="onEdit(product)"
-              >
-                <span
-                  nz-icon
-                  nzType="setting"
-                  nzTheme="fill"
-                  style="font-size: 32px; color: #08c"
-                ></span>
-              </button>
+                nz-icon
+                nzType="setting"
+                nzTheme="outline"
+                class="icon p-1 rounded-2 my-2"
+              ></span>
             </div>
           </div>
         </div></div
     ></swiper-slide>
-    <div class="card m-4">
-      <button
-        type="button"
-        class="btn btn-primary btn-lg rounded-circle w-25 m-auto"
-        routerLink="createProduct"
-      >
-        <h1>+</h1>
-      </button>
-    </div>
   </swiper-container>
 </div>

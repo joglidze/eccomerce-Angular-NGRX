@@ -3,10 +3,12 @@ import { ProductService } from 'src/app/core/services/product.service';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 import { Store, select } from '@ngrx/store';
+
 import { editProductState } from '../home/store/home.reduce';
 import { selectEditProductState } from '../home/store/home.select';
 import { editProduct } from '../home/store/home.actions';
 import { Router } from '@angular/router';
+import { selectCategoryState } from '../create-category/Store/category.select';
 
 @Component({
   selector: 'app-create-product',
@@ -15,6 +17,7 @@ import { Router } from '@angular/router';
 })
 export class CreateProductComponent implements OnDestroy, OnInit {
   background?: string;
+  categories: any;
   sub$ = new Subject();
   putBoolean: boolean = true;
   addProduct: FormGroup = new FormGroup({
@@ -23,11 +26,13 @@ export class CreateProductComponent implements OnDestroy, OnInit {
     image: new FormControl('', Validators.required),
     price: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
-    categoryId: new FormControl('', Validators.required),
+    category: new FormControl('', Validators.required),
   });
 
   ngOnInit(): void {
     this.editProduct();
+    this.categoriesSelect();
+    console.log(this.categories);
   }
   postProduct() {
     console.log(this.addProduct);
@@ -75,6 +80,15 @@ export class CreateProductComponent implements OnDestroy, OnInit {
         console.log(re);
         this.router.navigateByUrl('home');
         this.store.dispatch(editProduct({ productEditable: [] }));
+      });
+  }
+
+  categoriesSelect() {
+    this.categories = this.store
+      .pipe(select(selectCategoryState))
+      .subscribe((res) => {
+        this.categories = res;
+        console.log(res);
       });
   }
   ngOnDestroy(): void {

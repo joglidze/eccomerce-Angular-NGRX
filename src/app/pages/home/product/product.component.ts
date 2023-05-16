@@ -14,6 +14,8 @@ import {
 } from 'src/app/core/interfaces/product';
 import { Observable, Subject, filter, takeUntil, tap } from 'rxjs';
 import { register } from 'swiper/element/bundle';
+import { Router } from '@angular/router';
+import { productPageAction } from './store/product.action';
 
 @Component({
   selector: 'app-product',
@@ -24,7 +26,11 @@ export class ProductComponent implements OnInit, OnDestroy {
   productss: any;
   sub$ = new Subject();
 
-  constructor(private store: Store, private cartService: CartService) {}
+  constructor(
+    private store: Store,
+    private cartService: CartService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.selectProducts();
@@ -78,6 +84,12 @@ export class ProductComponent implements OnInit, OnDestroy {
         })
       )
       .subscribe();
+  }
+
+  onProduct(productId: string, product: ProductResponse) {
+    console.log(productId);
+    this.store.dispatch(productPageAction({ productPage: product }));
+     this.router.navigateByUrl(`home/product/${productId}`);
   }
 
   ngOnDestroy(): void {

@@ -10,5 +10,25 @@ span > p {
   font-size: 1.4rem;
 }
 
+.swiper-button-next {
+  background-color: red;
+}
 
+span:hover {
+  color: white;
+}
+button:hover {
+  color: white;
+}
 
+.icon {
+  cursor: pointer;
+  font-size: 32px;
+  color: #22493f;
+  background-color: #6ba342;
+  z-index: 5;
+  :hover {
+    color: white;
+    opacity: 0.8;
+  }
+}

@@ -1,0 +1,35 @@
+.product-heading {
+  color: #6ba342;
+  font-family: Roboto, sans-serif;
+  font-weight: 600;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  text-transform: none;
+}
+
+.product-price {
+  color: #3b3a3a;
+  display: inline-block;
+  font-size: 28px;
+  font-size: 2.1538461538rem;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+}
+
+span {
+  font-size: 30px;
+  cursor: pointer;
+  margin-right: 20px;
+  padding: 5px;
+  background-color: #6ba342;
+}
+span:hover {
+  color: #3b3a3a;
+}
+.par-product {
+  color: #3b3a3a;
+  margin-bottom: 1rem;
+  font-size: inherit;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}

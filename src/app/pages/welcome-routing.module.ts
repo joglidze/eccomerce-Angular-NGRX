@@ -7,6 +7,8 @@ import { CreateProductComponent } from './create-product/create-product.componen
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { CreateCategoryComponent } from './create-category/create-category.component';
 
+import { ProductPageComponent } from './product-page/product-page.component';
+
 const routes: Routes = [
   {
     path: 'home',
@@ -36,6 +38,10 @@ const routes: Routes = [
       {
         path: 'createCategory',
         component: CreateCategoryComponent,
+      },
+      {
+        path: 'product/:id',
+        component: ProductPageComponent,
       },
     ],
   },

@@ -23,11 +23,15 @@ import {
 } from './create-category/Store/category.reduce';
 import { EffectsModule } from '@ngrx/effects';
 import { CategoryEffect } from './create-category/Store/category.effects';
+import { ProductPageComponent } from './product-page/product-page.component';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 @NgModule({
   imports: [
     WelcomeRoutingModule,
     NzLayoutModule,
-
+    NzSelectModule,
+    NzIconModule,
     AuthModule,
     FormsModule,
     ReactiveFormsModule,
@@ -43,6 +47,7 @@ import { CategoryEffect } from './create-category/Store/category.effects';
     CreateProductComponent,
     CartPageComponent,
     CreateCategoryComponent,
+    ProductPageComponent,
   ],
   exports: [WelcomeComponent, CreateProductComponent],
 })
