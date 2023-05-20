@@ -5,7 +5,7 @@ import { ProductPost } from 'src/app/core/interfaces/productPost';
 import { cartState } from '../home/store/home.select';
 import { ProductResponse } from 'src/app/core/interfaces/product';
 import { deleteProduct } from './Store/cart.actions';
-import { addCart, dropDown } from '../home/store/home.actions';
+import { addCart} from '../home/store/home.actions';
 
 @Component({
   selector: 'app-cart-page',
@@ -39,7 +39,7 @@ export class CartPageComponent implements OnInit, OnDestroy {
 
     this.TotalCost();
     this.store.dispatch(addCart({ cart: this.cartProducts }));
-    this.store.dispatch(dropDown({dropdown:this.cartProducts}))
+    
     this.store.dispatch(deleteProduct({ productId }));
   }
 

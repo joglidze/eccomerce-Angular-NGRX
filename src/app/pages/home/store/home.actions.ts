@@ -12,10 +12,7 @@ export const addCart = createAction(
   props<{ cart: ProductResponse[] | undefined }>()
 );
 
-export const dropDown = createAction(
-  '[home Page] get cart Products',
-  props<{ dropdown: ProductResponse[] | undefined}>()
-);
+
 
 export const editProduct = createAction(
   '[home Page] get edit products',

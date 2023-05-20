@@ -6,7 +6,7 @@ import {
   selectdropdownState,
 } from '../store/home.select';
 import { ProductPost } from 'src/app/core/interfaces/productPost';
-import { addCart, dropDown, editProduct } from '../store/home.actions';
+import { addCart, editProduct } from '../store/home.actions';
 import { CartService } from 'src/app/core/services/cart.service';
 import {
   CategoryProduct,
@@ -46,7 +46,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   addCart(product: any) {
-    this.store.dispatch(dropDown({ dropdown: product }));
+    
 
     this.cartService
       .cartPost({

@@ -4,7 +4,7 @@ import { productPageSelect } from '../home/product/store/product.select';
 import { ProductResponse } from 'src/app/core/interfaces/product';
 import { ProductPost } from 'src/app/core/interfaces/productPost';
 import { CartService } from 'src/app/core/services/cart.service';
-import { addCart, dropDown } from '../home/store/home.actions';
+import { addCart} from '../home/store/home.actions';
 import { takeUntil } from 'rxjs';
 
 @Component({
@@ -28,8 +28,8 @@ export class ProductPageComponent implements OnInit {
   }
 
   addCart(product: any, quantity?: any) {
-    this.store.dispatch(dropDown({ dropdown: product }));
-
+   
+    this.store.dispatch(addCart({ cart: product }));
     this.cartService
       .cartPost({
         productId: product.id,
@@ -40,8 +40,6 @@ export class ProductPageComponent implements OnInit {
         if (res) {
           console.log(res);
         }
-
-        this.store.dispatch(addCart({ cart: [res] }));
       });
   }
 }

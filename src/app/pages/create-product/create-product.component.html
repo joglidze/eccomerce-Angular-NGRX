@@ -39,6 +39,8 @@
         id="price"
         aria-describedby="emailHelp"
       />
+
+      
     </div>
     <div class="mb-3">
       <label for="Description" class="form-label">Category</label>
@@ -52,7 +54,7 @@
       >
         <nz-option
         class="rounded-2 p-2"
-          *ngFor="let category of categories"
+          *ngFor="let category of (categories | async) || []"
           nzLabel="{{ category.name }}"
           nzValue="{{ category.name }}"
         ></nz-option>

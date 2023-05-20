@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     select(isLoggedIn)
   );
   isLoggedOut$?: Observable<boolean>;
-  
+
   constructor(
     private store: Store<AuthState>,
     private cartService: CartService
@@ -36,7 +36,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isLoggedOut$ = this.store.pipe(select(isLoggedout));
-    
 
     this.getCart();
 
@@ -62,13 +61,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.cartArray = res.addCart;
         console.log(res.addCart);
         console.log(this.cartArray);
-      });
 
-    this.store
-      .pipe(select(selectdropdownState), takeUntil(this.sub$))
-      .subscribe((res) => {
-        this.cartNumber = res;
-        console.log(this.cartNumber.length);
+        if (this.cartArray) {
+          this.cartNumber = this.cartArray?.reduce(
+            (total, item) => total + item.quantity,
+            0
+          );
+
+          console.log(this.cartNumber);
+        }
       });
   }
   getCart() {

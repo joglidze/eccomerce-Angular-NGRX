@@ -17,7 +17,7 @@ import { selectCategoryState } from '../create-category/Store/category.select';
 })
 export class CreateProductComponent implements OnDestroy, OnInit {
   background?: string;
-  categories: any;
+  categories = this.store.select(selectCategoryState);
   sub$ = new Subject();
   putBoolean: boolean = true;
   addProduct: FormGroup = new FormGroup({
@@ -31,8 +31,6 @@ export class CreateProductComponent implements OnDestroy, OnInit {
 
   ngOnInit(): void {
     this.editProduct();
-    this.categoriesSelect();
-    console.log(this.categories);
   }
   postProduct() {
     console.log(this.addProduct);
@@ -83,14 +81,6 @@ export class CreateProductComponent implements OnDestroy, OnInit {
       });
   }
 
-  categoriesSelect() {
-    this.categories = this.store
-      .pipe(select(selectCategoryState))
-      .subscribe((res) => {
-        this.categories = res;
-        console.log(res);
-      });
-  }
   ngOnDestroy(): void {
     this.sub$.next(null);
     this.sub$.complete();

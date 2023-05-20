@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { ProductResponse } from 'src/app/core/interfaces/product';
-import { dropDown, editProduct } from './home.actions';
+import { editProduct } from './home.actions';
 
 export const homeState = createFeatureSelector<any>('home');
 

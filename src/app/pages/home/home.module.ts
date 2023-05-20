@@ -11,8 +11,6 @@ import { StoreModule } from '@ngrx/store';
 import {
   cartFeaturekey,
   cartReducer,
-  dropDownKey,
-  dropDownReducer,
   editStateReduce,
   editableKey,
   homeFeaturekey,
@@ -45,11 +43,11 @@ import {
     NzCarouselModule,
     HeaderModule,
     NzCardModule,
-    
+
     EffectsModule.forFeature([CartPageEffect]),
     StoreModule.forFeature(homeFeaturekey, homeReducer),
     StoreModule.forFeature(cartFeaturekey, cartReducer),
-    StoreModule.forFeature(dropDownKey, dropDownReducer),
+
     StoreModule.forFeature(editableKey, editStateReduce),
     StoreModule.forFeature(productPageFeatureKey, productPageReducer),
   ],

@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { ProductResponse } from 'src/app/core/interfaces/product';
-import { dropDown, editProduct, products } from './home.actions';
+import {  editProduct, products } from './home.actions';
 import { addCart } from './home.actions';
 import { state } from '@angular/animations';
 import { ofType } from '@ngrx/effects';
@@ -43,17 +43,7 @@ export const cartReducer = createReducer(
 
 export const dropDownKey = 'dropDown';
 
-export const dropdownState: ProductResponse[] | any = {
-  dropDown: [],
-};
 
-export const dropDownReducer = createReducer(
-  dropdownState,
-  on(dropDown, (state, dropdownitems) => {
-    console.log(state);
-    return { dropDown: [...state.dropDown, dropdownitems.dropdown] };
-  })
-);
 
 export const editableKey = 'edit';
 
