@@ -1,0 +1,36 @@
+article {
+  p,
+  a {
+    color: #6ba342;
+    text-decoration: none;
+    margin: 10px;
+    font-weight: 700;
+  }
+}
+form {
+  input,
+  textarea {
+    border: 1px solid #6ba342;
+    border-radius: 2px;
+    color: black;
+    outline: none;
+    height: 3.5rem;
+  }
+  p {
+    color: #3b3a3a;
+    font-size: 0.9rem;
+  }
+  button {
+    border-radius: 0;
+    border: none;
+    width:100px;
+    padding: 5px;
+    text-transform: uppercase;
+    background-color: #6ba342;
+
+    box-shadow: none;
+    color: #fff;
+
+    font-size: 1.2307692308rem;
+  }
+}

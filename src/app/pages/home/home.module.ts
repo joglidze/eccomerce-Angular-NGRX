@@ -26,6 +26,7 @@ import {
   productPageFeatureKey,
   productPageReducer,
 } from './product/store/product.reduce';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {
     CarouselComponent,
     ProductComponent,
     HelpingSectionComponent,
+    ContactComponent,
   ],
   imports: [
     FormsModule,

@@ -1,4 +1,7 @@
-<div class="container d-flex justify-content-center w-100 gap-5 m-5">
+<div
+  class="container d-flex justify-content-center w-100 gap-5 m-5"
+  
+>
   <div>
     <div>
       <img src="{{ product?.image }}" alt="product Image" width="450px" />
@@ -6,7 +9,7 @@
   </div>
   <div>
     <div class="text-start">
-      <h1 class="product-heading">{{ product?.name | uppercase }}</h1>
+      <h1 class="product-heading">{{ product?.name }}</h1>
 
       <p class="product-price mt-2">{{ product?.price | currency }}</p>
     </div>

@@ -4,8 +4,10 @@ import { productPageSelect } from '../home/product/store/product.select';
 import { ProductResponse } from 'src/app/core/interfaces/product';
 import { ProductPost } from 'src/app/core/interfaces/productPost';
 import { CartService } from 'src/app/core/services/cart.service';
-import { addCart} from '../home/store/home.actions';
-import { takeUntil } from 'rxjs';
+import { addCart } from '../home/store/home.actions';
+import { takeUntil, tap } from 'rxjs';
+import { ProductService } from 'src/app/core/services/product.service';
+import { ActivatedRoute, Route } from '@angular/router';
 
 @Component({
   selector: 'app-product-page',
@@ -19,27 +21,53 @@ export class ProductPageComponent implements OnInit {
     this.getProduct();
   }
 
-  constructor(private store: Store, private cartService: CartService) {}
+  constructor(
+    private store: Store,
+    private cartService: CartService,
+    private productService: ProductService,
+    private route: ActivatedRoute
+  ) {}
 
   getProduct() {
     this.store.pipe(select(productPageSelect)).subscribe((res) => {
       this.product = res;
     });
+    console.log(Boolean({}));
+    if (JSON.stringify(this.product) === JSON.stringify({})) {
+      this.productService
+        .getProductById(this.route.snapshot.params['id'])
+        .subscribe((res) => {
+          this.product = res;
+        });
+    }
   }
 
   addCart(product: any, quantity?: any) {
    
-    this.store.dispatch(addCart({ cart: product }));
     this.cartService
       .cartPost({
         productId: product.id,
-        quantity: quantity,
+        quantity: 10,
       })
-      .pipe()
+      .pipe(
+        tap((test) => {
+          console.log(test);
+        })
+      )
       .subscribe((res) => {
         if (res) {
           console.log(res);
+          this.getCartProducts();
         }
+      });
+  }
+  getCartProducts() {
+    this.cartService
+      .getCartProduct()
+      .pipe()
+      .subscribe((res) => {
+        console.log(res);
+        this.store.dispatch(addCart({ cart: res }));
       });
   }
 }
