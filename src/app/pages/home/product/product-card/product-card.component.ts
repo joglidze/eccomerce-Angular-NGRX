@@ -7,6 +7,7 @@ import { addCart, editProduct } from '../../store/home.actions';
 import { ProductResponse } from 'src/app/core/interfaces/product';
 import { productPageAction } from '../store/product.action';
 import { Router } from '@angular/router';
+import { ProductService } from 'src/app/core/services/product.service';
 
 @Component({
   selector: 'app-product-card',
@@ -14,19 +15,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./product-card.component.scss'],
 })
 export class ProductCardComponent implements OnDestroy, OnInit {
- @Input() product: any;
+  @Input() product: any;
   sub$ = new Subject();
 
   constructor(
     private cartService: CartService,
     private store: Store,
-    private router: Router
+    private router: Router,
+    private productService: ProductService
   ) {}
-  ngOnInit(): void {
-   
-  }
+  ngOnInit(): void {}
 
-  
   onEdit(product: any) {
     this.store.dispatch(editProduct({ productEditable: product }));
     this.store
@@ -34,8 +33,6 @@ export class ProductCardComponent implements OnDestroy, OnInit {
         select(selectdropdownState),
         filter((state) => {
           if (state !== product) {
-            
-              
             return product;
           }
         })
@@ -70,6 +67,12 @@ export class ProductCardComponent implements OnDestroy, OnInit {
     console.log(productId);
     this.store.dispatch(productPageAction({ productPage: product }));
     this.router.navigateByUrl(`home/product/${productId}`);
+  }
+
+  onDelete(id: string) {
+    this.productService.deleteProduct(id).subscribe((res) => {
+      console.log(res);
+    });
   }
 
   ngOnDestroy(): void {

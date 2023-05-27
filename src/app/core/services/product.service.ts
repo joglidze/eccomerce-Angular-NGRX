@@ -24,4 +24,7 @@ export class ProductService extends BaseService {
   getProductById(id: string): Observable<ProductResponse> {
     return this.get(`product/${id}`);
   }
+  deleteProduct(id: string) {
+    return this.delete(`product/${id}`);
+  }
 }
