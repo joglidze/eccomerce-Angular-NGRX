@@ -28,6 +28,8 @@ import {
 } from './product/store/product.reduce';
 import { ContactComponent } from './contact/contact.component';
 
+import { WelcomeModule } from '../welcome.module';
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -35,11 +37,12 @@ import { ContactComponent } from './contact/contact.component';
     ProductComponent,
     HelpingSectionComponent,
     ContactComponent,
+    
   ],
   imports: [
     FormsModule,
     CommonModule,
-
+    WelcomeModule,
     RouterModule,
     NzIconModule,
     NzCarouselModule,

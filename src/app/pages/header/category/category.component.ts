@@ -9,6 +9,7 @@ import {
   updateCategory,
 } from '../../create-category/Store/category.action';
 import { CategoryService } from 'src/app/core/services/category.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-category',
@@ -23,7 +24,11 @@ export class CategoryComponent implements OnInit {
     this.categoryInState();
   }
 
-  constructor(private store: Store, private categoryService: CategoryService) {}
+  constructor(
+    private store: Store,
+    private categoryService: CategoryService,
+    private route: Router
+  ) {}
 
   categoriesSelect() {
     this.categories = this.store
@@ -50,7 +55,10 @@ export class CategoryComponent implements OnInit {
 
     this.categories = this.categories.filter((item: any) => item.id !== id);
     console.log(this.categories);
-    this.store.dispatch(deleteCategory({ updateCategories: id}));
-    this.store.dispatch(updateCategory({categories:this.categories}))
+    this.store.dispatch(deleteCategory({ updateCategories: id }));
+    this.store.dispatch(updateCategory({ categories: this.categories }));
+  }
+  nav(link: any) {
+    this.route.navigateByUrl(`home/products/${link}`);
   }
 }

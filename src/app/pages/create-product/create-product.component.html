@@ -49,14 +49,15 @@
         nzAllowClear
         class="w-100"
         nzPlaceHolder="Select category"
-        formControlName="category"
+        formControlName="categoryId"
         *ngIf="categories"
       >
         <nz-option
         class="rounded-2 p-2"
-          *ngFor="let category of (categories | async) || []"
+          *ngFor="let category of (categories | async) || []" 
+          nzValue="{{ category.id }}"
           nzLabel="{{ category.name }}"
-          nzValue="{{ category.name }}"
+         
         ></nz-option>
       </nz-select>
 

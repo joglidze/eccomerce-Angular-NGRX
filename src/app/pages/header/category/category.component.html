@@ -36,11 +36,12 @@
       <ul class="navbar-nav m-3">
         <li><a href="" class="nav-link active">Boots</a></li>
         <hr />
-        <li
+        <li 
           *ngFor="let category of categories"
+          (click)="nav(category.name)"
           class="d-flex align-items-center"
         >
-          <a href="" class="nav-link">{{ category.name }}</a>
+          <a class="nav-link">{{ category.name }}</a>
        
           <span
             nz-icon

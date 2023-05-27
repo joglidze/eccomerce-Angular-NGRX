@@ -26,7 +26,7 @@ export class CreateProductComponent implements OnDestroy, OnInit {
     image: new FormControl('', Validators.required),
     price: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
-    category: new FormControl('', Validators.required),
+    categoryId: new FormControl('', Validators.required),
   });
 
   ngOnInit(): void {

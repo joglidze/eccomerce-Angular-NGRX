@@ -1,0 +1,69 @@
+<div class="m-2 m-auto" style="width: 70%">
+    <div class="w-100">
+      
+      <img
+        [src]="product.image"
+        class="mb-1 w-100 rounded-2"
+        (click)="onProduct(product.id, product)"
+      />
+    </div>
+    <div class="w-full">
+      <div>
+        <h5>{{ product.name }}</h5>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <div>
+          <span class="text-red-400"
+            ><p>{{ product.price | currency }}</p>
+          </span>
+          <span
+            nz-icon
+            nzType="star"
+            nzTheme="fill"
+            style="color: #b2b2b2"
+          ></span>
+          <span
+            nz-icon
+            nzType="star"
+            nzTheme="fill"
+            style="color: #b2b2b2"
+          ></span>
+          <span
+            nz-icon
+            nzType="star"
+            nzTheme="fill"
+            style="color: #b2b2b2"
+          ></span>
+          <span
+            nz-icon
+            nzType="star"
+            nzTheme="fill"
+            style="color: #b2b2b2"
+          ></span>
+          <span nz-icon nzType="star" nzTheme="fill" style="color: #b2b2b2">
+          </span>
+        </div>
+        <div>
+          <span
+            (click)="addCart(product)"
+            nz-icon
+            nzType="shopping-cart"
+            nzTheme="outline"
+            class="icon p-1 rounded-2"
+          ></span>
+
+          <br />
+
+          <span
+            routerLink="createProduct"
+            (click)="onEdit(product)"
+            nz-icon
+            nzType="setting"
+            nzTheme="outline"
+            class="icon p-1 rounded-2 my-2"
+          ></span>
+        </div>
+      </div>
+    </div></div
+>
