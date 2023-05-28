@@ -1,4 +1,8 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule, createComponent } from '@angular/core';
+import {
+  CUSTOM_ELEMENTS_SCHEMA,
+  NgModule,
+  createComponent,
+} from '@angular/core';
 
 import { WelcomeRoutingModule } from './welcome-routing.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
@@ -28,6 +32,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { AllProductsComponent } from './all-products/all-products.component';
 import { ProductCardComponent } from './home/product/product-card/product-card.component';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   imports: [
     WelcomeRoutingModule,
@@ -40,7 +45,6 @@ import { ProductCardComponent } from './home/product/product-card/product-card.c
     HeaderModule,
     CommonModule,
 
-    
     AuthModule,
     StoreModule.forFeature(categoryFeatureKey, categoryReducer),
     EffectsModule.forFeature([CategoryEffect]),
@@ -51,11 +55,12 @@ import { ProductCardComponent } from './home/product/product-card/product-card.c
     AllProductsComponent,
     CreateProductComponent,
     CartPageComponent,
+    FooterComponent,
     CreateCategoryComponent,
     ProductPageComponent,
     AllProductsComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  exports: [WelcomeComponent, CreateProductComponent,ProductCardComponent,],
+  exports: [WelcomeComponent, CreateProductComponent, ProductCardComponent],
 })
 export class WelcomeModule {}

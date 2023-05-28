@@ -43,22 +43,15 @@ export class ProductPageComponent implements OnInit {
   }
 
   addCart(product: any, quantity?: any) {
-   
     this.cartService
       .cartPost({
         productId: product.id,
-        quantity: 10,
+        quantity: quantity,
       })
-      .pipe(
-        tap((test) => {
-          console.log(test);
-        })
-      )
+
       .subscribe((res) => {
-        if (res) {
-          console.log(res);
-          this.getCartProducts();
-        }
+        console.log(res);
+        this.getCartProducts();
       });
   }
   getCartProducts() {

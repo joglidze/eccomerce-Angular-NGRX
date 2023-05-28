@@ -30,6 +30,7 @@ import { ContactComponent } from './contact/contact.component';
 
 import { WelcomeModule } from '../welcome.module';
 
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -37,7 +38,6 @@ import { WelcomeModule } from '../welcome.module';
     ProductComponent,
     HelpingSectionComponent,
     ContactComponent,
-    
   ],
   imports: [
     FormsModule,

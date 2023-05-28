@@ -9,6 +9,7 @@ import { CreateCategoryComponent } from './create-category/create-category.compo
 
 import { ProductPageComponent } from './product-page/product-page.component';
 import { AllProductsComponent } from './all-products/all-products.component';
+import { FooterComponent } from './footer/footer.component';
 
 const routes: Routes = [
   {
@@ -28,9 +29,10 @@ const routes: Routes = [
         loadChildren: () =>
           import('./home/home.module').then((m) => m.HomeModule),
       },
+
       {
         path: 'products/:category',
-       
+
         component: AllProductsComponent,
       },
       {
