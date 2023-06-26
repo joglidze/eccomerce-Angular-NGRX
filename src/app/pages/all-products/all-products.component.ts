@@ -1,11 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { productsState } from '../home/store/home.select';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, tap } from 'rxjs';
-import { ProductPost } from 'src/app/core/interfaces/productPost';
-import { ProductResponse } from 'src/app/core/interfaces/product';
-import { Item } from 'src/app/core/interfaces/product';
+
 import { ProductService } from 'src/app/core/services/product.service';
 
 @Component({
@@ -15,7 +13,8 @@ import { ProductService } from 'src/app/core/services/product.service';
 })
 export class AllProductsComponent {
   productss: any;
-
+  category: Observable<string> =
+    this.activatedRoute.snapshot.params['category'];
   constructor(
     private store: Store,
     private activatedRoute: ActivatedRoute,
@@ -24,6 +23,8 @@ export class AllProductsComponent {
 
   ngOnInit(): void {
     this.selectProducts();
+    
+    console.log(this.category);
   }
 
   selectProducts() {
@@ -31,27 +32,28 @@ export class AllProductsComponent {
       .pipe(
         select(productsState),
         tap((products) => {
-          this.filterFunction(products)
+          this.filterFunction(products);
         })
       )
       .subscribe();
     if (!this.productss) {
       this.productService
         .getProducts()
-        .pipe(tap((products) => {
-          this.filterFunction(products)
-        }))
+        .pipe(
+          tap((products) => {
+            this.filterFunction(products);
+          })
+        )
         .subscribe((res) => {
           console.log(res);
         });
     }
   }
 
-  filterFunction(products:any) {
-    const category: Observable<string> =
-      this.activatedRoute.snapshot.params['category'];
+  filterFunction(products: any) {
+    
     this.productss = products.filter((product: any) => {
-      return product.category?.name === category;
+      return product.category?.name === this.category;
     });
   }
 }

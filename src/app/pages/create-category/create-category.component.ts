@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { categoryAction } from './Store/category.action';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-category',
@@ -13,12 +14,11 @@ export class CreateCategoryComponent {
     name: new FormControl('', Validators.required),
   });
 
-  constructor(private store: Store) {}
+  constructor(private store: Store, private router: Router) {}
 
   onSubmit() {
     console.log(this.categoryForm.value);
-    this.store.dispatch(categoryAction({ name:this.categoryForm.value }));
+    this.store.dispatch(categoryAction({ name: this.categoryForm.value }));
+    this.router.navigateByUrl('home');
   }
-
-
 }

@@ -59,6 +59,8 @@ export class CategoryComponent implements OnInit {
     this.store.dispatch(updateCategory({ categories: this.categories }));
   }
   nav(link: any) {
-    this.route.navigateByUrl(`home/products/${link}`);
+    this.route.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.route.navigateByUrl(`home/products/${link}`);
+    });
   }
 }

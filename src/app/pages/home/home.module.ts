@@ -30,7 +30,6 @@ import { ContactComponent } from './contact/contact.component';
 
 import { WelcomeModule } from '../welcome.module';
 
-
 @NgModule({
   declarations: [
     HomeComponent,
@@ -48,7 +47,7 @@ import { WelcomeModule } from '../welcome.module';
     NzCarouselModule,
     HeaderModule,
     NzCardModule,
-
+   
     EffectsModule.forFeature([CartPageEffect]),
     StoreModule.forFeature(homeFeaturekey, homeReducer),
     StoreModule.forFeature(cartFeaturekey, cartReducer),

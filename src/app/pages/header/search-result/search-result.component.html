@@ -1,0 +1,20 @@
+<div class="container" *ngFor="let product of products">
+  <div class="card mb-1 d-flex" style="max-width: 540px" [routerLink]="['product/', product.id]">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img
+          src="{{ product.image }}"
+          class="img-fluid rounded-start"
+          alt="..."
+        />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5>{{ product.name }}</h5>
+          <h5>{{ product.price | currency }}</h5>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

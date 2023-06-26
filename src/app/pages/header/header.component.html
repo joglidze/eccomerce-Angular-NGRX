@@ -16,6 +16,9 @@
       </div>
       <div class="input-group rounded" style="width: 30%">
         <input
+          (input)="filterProductsByName()"
+          (blur)="resetSearchText()"
+          [(ngModel)]="searchText"
           type="search"
           style="border-color: #6ba342 !important"
           class="form-control rounded-1 border border-4"
@@ -23,7 +26,12 @@
           aria-label="Search"
           aria-describedby="search-addon"
         />
-
+        <div class="searchResult">
+          <app-search-result
+            *ngIf="searchText"
+            [products]="products"
+          ></app-search-result>
+        </div>
         <span
           nz-icon
           nzType="search"
