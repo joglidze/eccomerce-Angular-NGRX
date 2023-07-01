@@ -23,7 +23,7 @@ form {
   button {
     border-radius: 0;
     border: none;
-    width:100px;
+    width: 100px;
     padding: 5px;
     text-transform: uppercase;
     background-color: #6ba342;
@@ -32,5 +32,15 @@ form {
     color: #fff;
 
     font-size: 1.2307692308rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+
+  .res-cont{
+   
+    width: 400px !important;
+    margin: auto;
   }
 }

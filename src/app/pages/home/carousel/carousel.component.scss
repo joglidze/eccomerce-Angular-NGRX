@@ -9,3 +9,26 @@
     color: black;
   }
 }
+
+.media-quary {
+  height: 650px;
+}
+.carousel-img {
+  max-inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 2/1;
+  object-fit: cover;
+}
+
+
+@media screen and (max-width: 600px) {
+  .media-quary {
+    height: 500px !important;
+  }
+  .carousel-img {
+    max-inline-size: 100%;
+    block-size: auto;
+    aspect-ratio: 2/2;
+    object-fit: cover;
+  }
+}

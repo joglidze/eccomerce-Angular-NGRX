@@ -7,16 +7,16 @@
   >
     <div class="carousel-inner">
       <div>
-        <div style="height: 550px">
+        <div class="media-quary">
           <nz-carousel
             nzAutoPlay
             class="carousel-item active"
             *ngFor="let img of array"
           >
             <div nz-carousel-content *ngFor="let index of array">
-              <div>
+              <div class="img-cont">
                 <a
-                  ><img src="{{ index }}" alt="images" class="d-block w-100" />
+                  ><img src="{{ index }}" alt="images" class="d-block carousel-img" />
                 </a>
               </div>
             </div>
