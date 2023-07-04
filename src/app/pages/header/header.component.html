@@ -81,7 +81,10 @@
               <nz-dropdown-menu #menu="nzDropdownMenu">
                 <ul nz-menu *ngFor="let product of cartArray">
                   <li nz-menu-item (click)="log('1st menu item')">
-                    <nz-card style="width: 400px; margin-top: 16px">
+                    <nz-card
+                      style="width: 500px; margin-top: 16px"
+                      routerLink="product/{{ product.item.id }}"
+                    >
                       <div
                         class="d-flex justify-content-between w-100 align-items-center"
                       >
@@ -89,10 +92,10 @@
                           <img
                             src="{{ product.item.image }}"
                             alt=""
-                            width="100px"
+                            width="150px"
                           />
                         </div>
-                        <div>
+                        <div class="m-5">
                           <p>{{ product.quantity }}</p>
                         </div>
                         <div>

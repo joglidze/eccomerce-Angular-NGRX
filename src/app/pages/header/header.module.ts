@@ -14,6 +14,7 @@ import { FormsModule } from "@angular/forms";
 import { SearchResultComponent } from './search-result/search-result.component';
 import { HomeModule } from "../home/home.module";
 import { RouterLink, RouterModule } from "@angular/router";
+import { SharedModule } from "src/app/shared/shared.module";
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { RouterLink, RouterModule } from "@angular/router";
         NzMenuModule,
         NzPopoverModule,
         RouterModule,
-        
+        SharedModule
     ]
 })
 export class HeaderModule {}

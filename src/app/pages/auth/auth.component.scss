@@ -20,3 +20,14 @@ user agent stylesheet div {
   display: block;
 }
 
+@media screen and (max-width:600px) {
+  .main-cont{
+    width: 400px !important;
+   text-align:start;
+   margin: 50px;
+  }
+  input{
+    width: 300px;
+    
+  };
+}

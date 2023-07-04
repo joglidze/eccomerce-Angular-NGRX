@@ -29,6 +29,7 @@ import {
 import { ContactComponent } from './contact/contact.component';
 
 import { WelcomeModule } from '../welcome.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { WelcomeModule } from '../welcome.module';
     NzCarouselModule,
     HeaderModule,
     NzCardModule,
-   
+   SharedModule,
     EffectsModule.forFeature([CartPageEffect]),
     StoreModule.forFeature(homeFeaturekey, homeReducer),
     StoreModule.forFeature(cartFeaturekey, cartReducer),

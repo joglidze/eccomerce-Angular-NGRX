@@ -24,7 +24,6 @@ export class ProductComponent implements OnInit, OnDestroy {
     console.log(this.screenWidth);
     this.selectProducts();
     register();
-  
   }
 
   selectProducts() {
@@ -36,12 +35,10 @@ export class ProductComponent implements OnInit, OnDestroy {
   @HostListener('window:resize', ['$event'])
   onWindowResize() {
     this.screenWidth = window.innerWidth;
-    console.log(this.screenWidth);
   }
 
   ngOnDestroy(): void {
     this.sub$.next(null);
     this.sub$.complete();
   }
-  
 }

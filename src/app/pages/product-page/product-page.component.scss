@@ -33,3 +33,9 @@ span:hover {
   line-height: 1.6;
   text-rendering: optimizeLegibility;
 }
+
+@media screen and (max-width:600px) {
+  .img-margin{
+    margin-top: 80px;
+  }
+}

@@ -33,6 +33,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { AllProductsComponent } from './all-products/all-products.component';
 import { ProductCardComponent } from './home/product/product-card/product-card.component';
 import { FooterComponent } from './footer/footer.component';
+import { SharedModule } from '../shared/shared.module';
 @NgModule({
   imports: [
     WelcomeRoutingModule,
@@ -44,7 +45,7 @@ import { FooterComponent } from './footer/footer.component';
     ReactiveFormsModule,
     HeaderModule,
     CommonModule,
-
+    SharedModule,
     AuthModule,
     StoreModule.forFeature(categoryFeatureKey, categoryReducer),
     EffectsModule.forFeature([CategoryEffect]),

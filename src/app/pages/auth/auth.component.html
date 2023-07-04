@@ -1,9 +1,9 @@
 <nz-tabset
-  class="justify-content-center mt-5 w-25 m-auto text-start"
+  class="justify-content-center mt-5 w-25 m-auto text-start mb-4 main-cont"
   [nzSelectedIndex]="changeTab"
 >
   <nz-tab nzTitle="Log In"
-    ><div>
+    ><div class="">
       <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label"
@@ -31,10 +31,8 @@
             id="exampleInputPassword1"
           />
         </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+
+        <button type="submit" class="btn btn-primary">Sign In</button>
       </form>
     </div></nz-tab
   >
@@ -90,7 +88,7 @@
           />
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
       </form>
     </div></nz-tab
   >

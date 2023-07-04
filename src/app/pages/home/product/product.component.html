@@ -6,7 +6,7 @@
     rewind="true"
     pagination="true"
   >
-    <div class="m-4 w-25 bg-primary m-auto p-5 rounded-2 bg-dark">
+    <div class="m-4 w-25 bg-primary m-auto p-5 rounded-2 bg-dark" appAdmin>
       <button
         type="button"
         class="btn btn-primary btn-lg rounded-circle"
@@ -29,18 +29,19 @@
   
 </div>
 
-<swiper-container
+<swiper-container 
     *ngIf="screenWidth < 700"
     slides-per-view="1"
     class="w-75"
     rewind="true"
     pagination="true"
   >
-    <div class="m-4 w-25 bg-primary m-auto p-5 rounded-2 bg-dark d-none">
+    <div class="m-4 w-25 bg-primary m-auto p-5 rounded-2 bg-dark d-none"appAdmin >
       <button
         type="button"
         class="btn btn-primary btn-lg rounded-circle"
         routerLink="createProduct"
+       
       >
         <h1>+</h1>
       </button>

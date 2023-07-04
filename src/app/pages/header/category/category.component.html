@@ -45,6 +45,7 @@
           <a class="nav-link">{{ category.name }}</a>
        
           <span
+          appAdmin
             nz-icon
             nzType="close"
             nzTheme="outline"
@@ -55,7 +56,7 @@
         </li>
       </ul>
       <ul>
-        <button class="btn btn-primary" routerLink="createCategory">
+        <button class="btn btn-primary" routerLink="createCategory" appAdmin>
           Add category
         </button>
       </ul>
