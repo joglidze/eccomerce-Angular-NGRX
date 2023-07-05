@@ -33,7 +33,9 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { AllProductsComponent } from './all-products/all-products.component';
 import { ProductCardComponent } from './home/product/product-card/product-card.component';
 import { FooterComponent } from './footer/footer.component';
+import { NzResultModule } from 'ng-zorro-antd/result';
 import { SharedModule } from '../shared/shared.module';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 @NgModule({
   imports: [
     WelcomeRoutingModule,
@@ -47,6 +49,8 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     SharedModule,
     AuthModule,
+    NzResultModule,
+    NzMessageModule,
     StoreModule.forFeature(categoryFeatureKey, categoryReducer),
     EffectsModule.forFeature([CategoryEffect]),
   ],

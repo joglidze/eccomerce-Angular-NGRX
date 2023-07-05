@@ -3,6 +3,7 @@ import { Store, select } from '@ngrx/store';
 import { CartService } from 'src/app/core/services/cart.service';
 import { productsState, selectdropdownState } from '../../store/home.select';
 import { Subject, filter, takeUntil } from 'rxjs';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { addCart, editProduct } from '../../store/home.actions';
 import { ProductResponse } from 'src/app/core/interfaces/product';
 import { productPageAction } from '../store/product.action';
@@ -17,12 +18,14 @@ import { ProductService } from 'src/app/core/services/product.service';
 export class ProductCardComponent implements OnDestroy, OnInit {
   @Input() product: any;
   sub$ = new Subject();
-
+  
+  
   constructor(
     private cartService: CartService,
     private store: Store,
     private router: Router,
-    private productService: ProductService
+    private productService: ProductService,
+    private nzMessage:NzMessageService
   ) {}
   ngOnInit(): void {}
 
@@ -49,6 +52,7 @@ export class ProductCardComponent implements OnDestroy, OnInit {
       .pipe(takeUntil(this.sub$))
       .subscribe((res) => {
         console.log(res);
+      this.nzMessage.create("success", `Item added to cart`);
       });
 
     this.getCartProducts();

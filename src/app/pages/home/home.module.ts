@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { HeaderModule } from '../header/header.module';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 import { StoreModule } from '@ngrx/store';
 import {
   cartFeaturekey,
@@ -47,8 +48,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     NzIconModule,
     NzCarouselModule,
     HeaderModule,
+    NzMessageModule,
     NzCardModule,
-   SharedModule,
+    SharedModule,
     EffectsModule.forFeature([CartPageEffect]),
     StoreModule.forFeature(homeFeaturekey, homeReducer),
     StoreModule.forFeature(cartFeaturekey, cartReducer),

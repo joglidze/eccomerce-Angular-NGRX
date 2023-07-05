@@ -1,29 +1,86 @@
-<table class="table media-quary">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Product</th>
-      <th scope="col">Price</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Total Price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let product of cartProducts">
-      <th scope="row">
-        <img [src]="product.item.image" alt="" width="200px" />
-      </th>
-      <td>{{ product.item.name }}</td>
-      <td>{{ product.item.price | currency }}</td>
-      <td>{{ product.quantity }}</td>
-      <td>{{ product.total | currency }}</td>
+<div *ngIf="this.cartProducts?.length && !loader">
+  <table class="table media-quary">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Product</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of cartProducts">
+        <th scope="row">
+          <img [src]="product.item.image" alt="" width="200px" />
+        </th>
+        <td>{{ product.item.name }}</td>
+        <td>{{ product.item.price | currency }}</td>
+        <td>{{ product.quantity }}</td>
+        <td>{{ product.total | currency }}</td>
 
-      <td>
-        <button class="btn btn-danger" (click)="deleteCart(product.id)">Delete</button>
-      </td>
-    </tr>
-  </tbody>
-  <div>
-    <h1>Total:{{ cartSum | currency }}</h1>
+        <td>
+          <button class="btn btn-danger" (click)="deleteCart(product.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3">
+        <h1>Total:{{ cartSum | currency }}</h1>
+      </div>
+      <div class="col-sm-2 ms-auto">
+        <button class="btn btn-success" (click)="orderIt()">Checkout</button>
+      </div>
+    </div>
   </div>
-</table>
+</div>
+<div *ngIf="!this.cartProducts?.length && !successMessage">
+  <div class="container-fluid media-quary">
+    <div class="row mt-5">
+      <div class="col-md-12">
+        <div>
+          <div class="card-body cart">
+            <div class="col-sm-12 empty-cart-cls text-center">
+              <img
+                src="/assets/undraw_empty_cart_co35.svg"
+                width="250"
+                height="130"
+                class="img-fluid mb-4 mr-3"
+              />
+              <h3><strong>Your Cart is Empty</strong></h3>
+              <h4>Add something to make me happy :)</h4>
+              <button
+                href="#"
+                class="m-3 rounded-2 ampty-btn"
+                routerLink="/home"
+              >
+                Continue Shopping
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="successMessage">
+  <nz-result
+    [nzIcon]="'smile-twotone'"
+    [nzTitle]="'Great, we have done all the operators!'"
+  >
+    <div nz-result-extra>
+      <button href="#" class="m-3 rounded-2 ampty-btn" routerLink="/home">
+        Continue Shopping
+      </button>
+    </div>
+  </nz-result>
+</div>
+<div class="w-100 text-center" style="height: 500px;" *ngIf="loader">
+<div class="spinner-border text-success mt-5" style="width: 5rem; height: 5rem;" role="status" >
+  <span class="visually-hidden">Loading...</span>
+</div>
+</div>
