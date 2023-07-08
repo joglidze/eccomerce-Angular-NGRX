@@ -1,4 +1,4 @@
 export const environment = {
-  production: false,
-  apiUrl: 'https://busy-lime-vulture-wig.cyclic.app',
+  production: true,
+  apiUrl: 'https://ljeccomerceapi.onrender.com/',
 };
