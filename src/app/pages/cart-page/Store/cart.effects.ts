@@ -12,7 +12,7 @@ export class CartPageEffect {
       this.action$.pipe(
         ofType(deleteProduct),
         switchMap((action) => {
-          console.log(action);
+          
           return this.cartService.deleteProduct(action.productId);
         })
       ),

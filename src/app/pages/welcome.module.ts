@@ -21,6 +21,7 @@ import { CreateProductComponent } from './create-product/create-product.componen
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { CreateCategoryComponent } from './create-category/create-category.component';
 import { StoreModule } from '@ngrx/store';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import {
   categoryFeatureKey,
   categoryReducer,
@@ -43,6 +44,7 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
     NzSelectModule,
     NzIconModule,
     AuthModule,
+    NzToolTipModule,
     FormsModule,
     ReactiveFormsModule,
     HeaderModule,

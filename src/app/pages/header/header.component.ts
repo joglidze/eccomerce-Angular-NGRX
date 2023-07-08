@@ -17,7 +17,8 @@ import {
   CategoryProduct,
   ProductResponse,
 } from 'src/app/core/interfaces/product';
-import { selectCategoryState } from '../create-category/Store/category.select';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-header',
@@ -37,7 +38,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store<AuthState>,
-    private cartService: CartService
+    private cartService: CartService,
+    private router:Router,
   ) {}
 
   ngOnInit(): void {
@@ -48,25 +50,26 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.cart();
   }
   log(data: string): void {
-    console.log(data);
+   
 
     this.isLoggedIn$?.subscribe((res) => {
-      console.log(res);
+     
     });
 
-    console.log(this.isLoggedOut$);
+    
   }
 
   onLogout() {
     this.store.dispatch(logOut());
+   
+
   }
   cart() {
     this.store
       .pipe(select(cartState), takeUntil(this.sub$))
       .subscribe((res) => {
         this.cartArray = res.addCart;
-        console.log(res.addCart);
-        console.log(this.cartArray);
+       
 
         if (this.cartArray) {
           this.cartNumber = this.cartArray?.reduce(
@@ -74,7 +77,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
             0
           );
 
-          console.log(this.cartNumber);
+        
         }
       });
   }

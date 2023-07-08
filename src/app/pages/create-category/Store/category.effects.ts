@@ -32,11 +32,11 @@ export class CategoryEffect {
       this.action$.pipe(
         ofType(deleteCategory),
         tap((action) => {
-          console.log(action);
+       
           this.categoryService
             .deleteCategory(action.updateCategories)
             .subscribe((res) => {
-              console.log(res);
+              
             });
             
         })

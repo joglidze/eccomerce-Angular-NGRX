@@ -17,7 +17,7 @@ export class CreateCategoryComponent {
   constructor(private store: Store, private router: Router) {}
 
   onSubmit() {
-    console.log(this.categoryForm.value);
+    
     this.store.dispatch(categoryAction({ name: this.categoryForm.value }));
     this.router.navigateByUrl('home');
   }

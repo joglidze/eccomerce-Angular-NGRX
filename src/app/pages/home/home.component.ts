@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         })
       )
       .subscribe((res) => {
-        console.log(res);
+       
       });
   }
 

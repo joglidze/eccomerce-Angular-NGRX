@@ -5,9 +5,10 @@ import { ProductResponse } from 'src/app/core/interfaces/product';
 import { ProductPost } from 'src/app/core/interfaces/productPost';
 import { CartService } from 'src/app/core/services/cart.service';
 import { addCart } from '../home/store/home.actions';
-import { takeUntil, tap } from 'rxjs';
+import { catchError, takeUntil, tap } from 'rxjs';
 import { ProductService } from 'src/app/core/services/product.service';
 import { ActivatedRoute, Route } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-product-page',
@@ -25,14 +26,15 @@ export class ProductPageComponent implements OnInit {
     private store: Store,
     private cartService: CartService,
     private productService: ProductService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private nzMessage: NzMessageService
   ) {}
 
   getProduct() {
     this.store.pipe(select(productPageSelect)).subscribe((res) => {
       this.product = res;
     });
-    console.log(Boolean({}));
+
     if (JSON.stringify(this.product) === JSON.stringify({})) {
       this.productService
         .getProductById(this.route.snapshot.params['id'])
@@ -46,12 +48,16 @@ export class ProductPageComponent implements OnInit {
     this.cartService
       .cartPost({
         productId: product.id,
-        quantity: quantity,
+        quantity: 1,
       })
-
+      .pipe(
+        catchError((error: any) => {
+          this.nzMessage.create('error', `Please Authorize`);
+          return error;
+        })
+      )
       .subscribe((res) => {
-        console.log(res);
-        this.getCartProducts();
+        this.nzMessage.create('success', `Item added to cart`);
       });
   }
   getCartProducts() {
@@ -59,7 +65,6 @@ export class ProductPageComponent implements OnInit {
       .getCartProduct()
       .pipe()
       .subscribe((res) => {
-        console.log(res);
         this.store.dispatch(addCart({ cart: res }));
       });
   }

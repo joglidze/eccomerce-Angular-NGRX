@@ -23,8 +23,8 @@ export class AllProductsComponent {
 
   ngOnInit(): void {
     this.selectProducts();
-    
-    console.log(this.category);
+
+    this.category;
   }
 
   selectProducts() {
@@ -44,14 +44,11 @@ export class AllProductsComponent {
             this.filterFunction(products);
           })
         )
-        .subscribe((res) => {
-          console.log(res);
-        });
+        .subscribe()
     }
   }
 
   filterFunction(products: any) {
-    
     this.productss = products.filter((product: any) => {
       return product.category?.name === this.category;
     });

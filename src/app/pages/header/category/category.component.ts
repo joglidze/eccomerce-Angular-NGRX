@@ -44,17 +44,17 @@ export class CategoryComponent implements OnInit {
       .pipe(
         switchMap((data) => {
           const names = data.map((category) => category);
-          console.log(names);
+        
           return of(categoryAction({ name: names }));
         })
       )
       .subscribe((action) => this.store.dispatch(action));
   }
   onDelete(id: number) {
-    console.log(id);
+    
 
     this.categories = this.categories.filter((item: any) => item.id !== id);
-    console.log(this.categories);
+    
     this.store.dispatch(deleteCategory({ updateCategories: id }));
     this.store.dispatch(updateCategory({ categories: this.categories }));
   }

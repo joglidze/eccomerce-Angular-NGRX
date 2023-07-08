@@ -33,13 +33,13 @@ export class CreateProductComponent implements OnDestroy, OnInit {
     this.editProduct();
   }
   postProduct() {
-    console.log(this.addProduct);
+    
     if (this.putBoolean == true) {
       this.productService
         .postProducts(this.addProduct.value)
         .pipe(takeUntil(this.sub$))
         .subscribe((res) => {
-          console.log(res);
+          
           this.router.navigateByUrl('home');
         });
     } else {
@@ -65,17 +65,17 @@ export class CreateProductComponent implements OnDestroy, OnInit {
         categoryId: new FormControl(res.category, Validators.required),
       });
       this.putBoolean = false;
-      console.log(this.putBoolean);
+    
     });
   }
 
   putProduct() {
-    console.log('put');
-    console.log(this.addProduct.value.id);
+  
+    
     this.productService
       .editProduct(this.addProduct.value.id, this.addProduct.value)
       .subscribe((re) => {
-        console.log(re);
+       
         this.router.navigateByUrl('home');
         this.store.dispatch(editProduct({ productEditable: [] }));
       });

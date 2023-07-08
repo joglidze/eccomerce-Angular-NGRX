@@ -1,7 +1,7 @@
 <div class="m-2 m-auto" style="width: 70%">
   <div class="w-100 position-relative">
-    <div class="position-absolute top-0 end-0"appAdmin>
-      <button class="btn btn-danger m-2 " (click)="onDelete(product.id)" >
+    <div class="position-absolute top-0 end-0" appAdmin>
+      <button class="btn btn-danger m-2" (click)="onDelete(product.id)">
         X
       </button>
     </div>
@@ -49,17 +49,19 @@
         </span>
       </div>
       <div>
-        <span
+        <button
+          appUser
           (click)="addCart(product)"
           nz-icon
           nzType="shopping-cart"
           nzTheme="outline"
           class="icon p-1 rounded-2"
-        ></span>
+        ></button>
 
         <br />
 
         <span
+          appAdmin
           routerLink="createProduct"
           (click)="onEdit(product)"
           nz-icon

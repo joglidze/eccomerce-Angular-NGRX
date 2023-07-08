@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { CartService } from 'src/app/core/services/cart.service';
 import { productsState, selectdropdownState } from '../../store/home.select';
-import { Subject, filter, takeUntil } from 'rxjs';
+import { Subject, catchError, filter, takeUntil } from 'rxjs';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { addCart, editProduct } from '../../store/home.actions';
 import { ProductResponse } from 'src/app/core/interfaces/product';
@@ -49,10 +49,15 @@ export class ProductCardComponent implements OnDestroy, OnInit {
         productId: product.id,
         quantity: 1,
       })
-      .pipe(takeUntil(this.sub$))
+      .pipe(takeUntil(this.sub$),catchError((error:any) =>{
+         this.nzMessage.create("error", `Please Authorize`);
+        return error
+      }))
       .subscribe((res) => {
-        console.log(res);
-      this.nzMessage.create("success", `Item added to cart`);
+       
+        this.nzMessage.create("success", `Item added to cart`);
+       
+      
       });
 
     this.getCartProducts();
@@ -63,19 +68,19 @@ export class ProductCardComponent implements OnDestroy, OnInit {
       .getCartProduct()
       .pipe(takeUntil(this.sub$))
       .subscribe((res) => {
-        console.log(res);
+       
         this.store.dispatch(addCart({ cart: res }));
       });
   }
   onProduct(productId: string, product: ProductResponse) {
-    console.log(productId);
+   
     this.store.dispatch(productPageAction({ productPage: product }));
     this.router.navigateByUrl(`home/product/${productId}`);
   }
 
   onDelete(id: string) {
     this.productService.deleteProduct(id).subscribe((res) => {
-      console.log(res);
+     
     });
   }
 

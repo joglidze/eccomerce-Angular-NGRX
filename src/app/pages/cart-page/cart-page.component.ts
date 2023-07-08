@@ -30,9 +30,7 @@ export class CartPageComponent implements OnInit, OnDestroy {
       .pipe(select(cartState), takeUntil(this.sub$))
       .subscribe((res) => {
         this.cartProducts = res.addCart;
-        if (res) {
-          console.log(this.cartProducts?.length);
-        }
+        
 
         this.TotalCost();
       });
@@ -62,7 +60,7 @@ export class CartPageComponent implements OnInit, OnDestroy {
 
   orderIt() {
     this.orderService.orderIt().subscribe((res) => {
-      console.log(res);
+     
       this.loader=true;
       
       setTimeout(()=>{

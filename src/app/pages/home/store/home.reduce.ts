@@ -54,7 +54,7 @@ export const editProductState: ProductPost | any = {
 export const editStateReduce = createReducer(
   editProductState,
   on(editProduct, (state, editproduct) => {
-    console.log(state);
+    
     return { editproduct: editproduct.productEditable };
   })
 );

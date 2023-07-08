@@ -23,13 +23,13 @@ export const authState: AuthState = {
 export const authReducer = createReducer(
   authState,
   on(AuthActions.login, (state, action) => {
-    console.log(state, action.user);
+    
     return {
       user: action.user,
     };
   }),
   on(AuthActions.logOut, (state, action) => {
-    console.log(state, action);
+    
     return {
       user: undefined,
     };

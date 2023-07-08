@@ -21,7 +21,7 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
-    console.log(this.screenWidth);
+    
     this.selectProducts();
     register();
   }

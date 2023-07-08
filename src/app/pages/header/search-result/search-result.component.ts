@@ -13,7 +13,7 @@ export class SearchResultComponent implements OnInit {
  @Input() products: any;
   constructor() {}
   ngOnInit(): void {
-   console.log(this.products);
+  
   }
  
 
