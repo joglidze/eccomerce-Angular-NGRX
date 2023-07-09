@@ -18,14 +18,13 @@ import { ProductService } from 'src/app/core/services/product.service';
 export class ProductCardComponent implements OnDestroy, OnInit {
   @Input() product: any;
   sub$ = new Subject();
-  
-  
+
   constructor(
     private cartService: CartService,
     private store: Store,
     private router: Router,
     private productService: ProductService,
-    private nzMessage:NzMessageService
+    private nzMessage: NzMessageService
   ) {}
   ngOnInit(): void {}
 
@@ -47,20 +46,20 @@ export class ProductCardComponent implements OnDestroy, OnInit {
     this.cartService
       .cartPost({
         productId: product.id,
-        quantity: 1,
+        quantity: '1',
       })
-      .pipe(takeUntil(this.sub$),catchError((error:any) =>{
-         this.nzMessage.create("error", `Please Authorize`);
-        return error
-      }))
+      .pipe(
+        takeUntil(this.sub$),
+        catchError((error: any) => {
+          this.nzMessage.create('error', `Please Authorize`);
+          return error;
+        })
+      )
       .subscribe((res) => {
-       
-        this.nzMessage.create("success", `Item added to cart`);
-       
-      
-      });
+        this.getCartProducts();
 
-    this.getCartProducts();
+        this.nzMessage.create('success', `Item added to cart`);
+      });
   }
 
   getCartProducts() {
@@ -68,20 +67,16 @@ export class ProductCardComponent implements OnDestroy, OnInit {
       .getCartProduct()
       .pipe(takeUntil(this.sub$))
       .subscribe((res) => {
-       
         this.store.dispatch(addCart({ cart: res }));
       });
   }
   onProduct(productId: string, product: ProductResponse) {
-   
     this.store.dispatch(productPageAction({ productPage: product }));
     this.router.navigateByUrl(`home/product/${productId}`);
   }
 
   onDelete(id: string) {
-    this.productService.deleteProduct(id).subscribe((res) => {
-     
-    });
+    this.productService.deleteProduct(id).subscribe((res) => {});
   }
 
   ngOnDestroy(): void {

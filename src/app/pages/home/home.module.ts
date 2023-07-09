@@ -8,6 +8,7 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { HeaderModule } from '../header/header.module';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { StoreModule } from '@ngrx/store';
 import {
   cartFeaturekey,
@@ -42,6 +43,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
   ],
   imports: [
     FormsModule,
+    NzSkeletonModule,
     CommonModule,
     WelcomeModule,
     RouterModule,

@@ -1,12 +1,53 @@
-<div class="row row-cols-1 row-cols-md-5 w-100 text-start p-2">
+<div class="row row-cols-1 w-100 text-start p-2">
   <swiper-container
     *ngIf="screenWidth > 700"
     slides-per-view="3"
     class="w-75"
     rewind="true"
     pagination="true"
-  >
-    <div class="m-4 w-25 bg-primary m-auto p-5 rounded-2 bg-dark" appAdmin>
+    ><div class="row gap-5" *ngIf="!productss">
+      <nz-card style="width: 300px; margin-top: 16px" class="m-auto">
+        <nz-skeleton-element
+          nzType="image"
+          [nzActive]="true"
+        ></nz-skeleton-element>
+        <nz-skeleton
+          [nzActive]="true"
+          [nzTitle]="true"
+          [nzParagraph]="{ rows: 3 }"
+        >
+        </nz-skeleton>
+      </nz-card>
+      <nz-card style="width: 300px; margin-top: 16px" class="m-auto">
+        <nz-skeleton-element
+          nzType="image"
+          [nzActive]="true"
+        ></nz-skeleton-element>
+        <nz-skeleton
+          [nzActive]="true"
+          [nzTitle]="true"
+          [nzParagraph]="{ rows: 3 }"
+        >
+        </nz-skeleton>
+      </nz-card>
+      <nz-card style="width: 300px; margin-top: 16px" class="m-auto">
+        <nz-skeleton-element
+          nzType="image"
+          [nzActive]="true"
+        ></nz-skeleton-element>
+        <nz-skeleton
+          [nzActive]="true"
+          [nzTitle]="true"
+          [nzParagraph]="{ rows: 3 }"
+        >
+        </nz-skeleton>
+      </nz-card>
+    </div>
+    <div
+      class="m-4 w-25 bg-primary m-auto p-5 rounded-2 bg-dark"
+      appAdmin
+      *ngIf="productss"
+    >
       <button
         type="button"
         class="btn btn-primary btn-lg rounded-circle"
@@ -15,6 +56,7 @@
         <h1>+</h1>
       </button>
     </div>
+
     <swiper-slide
       *ngFor="let product of productss"
       aria-controls="swiper-wrapper-105267bf3ead58ec2"
@@ -26,35 +68,38 @@
       ></app-product-card>
     </swiper-slide>
   </swiper-container>
-  
 </div>
 
-<swiper-container 
-    *ngIf="screenWidth < 700"
-    slides-per-view="1"
-    class="w-75"
-    rewind="true"
-    pagination="true"
-    navigation="true"
+<swiper-container
+  *ngIf="screenWidth < 700"
+  slides-per-view="1"
+  class="w-75"
+  rewind="true"
+  pagination="true"
+  navigation="true"
+>
+  <nz-card
+    style="width: 300px; margin-top: 16px"
+    class="m-auto"
+    *ngIf="!productss"
   >
-    <div class="m-4 w-25 bg-primary m-auto p-5 rounded-2 bg-dark d-none"appAdmin >
-      <button
-        type="button"
-        class="btn btn-primary btn-lg rounded-circle"
-        routerLink="createProduct"
-       
-      >
-        <h1>+</h1>
-      </button>
-    </div>
-    <swiper-slide
-      *ngFor="let product of productss"
-      aria-controls="swiper-wrapper-105267bf3ead58ec2"
-      
+    <nz-skeleton-element nzType="image" [nzActive]="true"></nz-skeleton-element>
+    <nz-skeleton [nzActive]="true" [nzTitle]="true" [nzParagraph]="{ rows: 3 }">
+    </nz-skeleton>
+  </nz-card>
+  <div class="m-4 w-25 bg-primary m-auto p-5 rounded-2 bg-dark d-none" appAdmin>
+    <button
+      type="button"
+      class="btn btn-primary btn-lg rounded-circle"
+      routerLink="createProduct"
     >
-      <app-product-card
-        [product]="product"
-        
-      ></app-product-card>
-    </swiper-slide>
-  </swiper-container>
+      <h1>+</h1>
+    </button>
+  </div>
+  <swiper-slide
+    *ngFor="let product of productss"
+    aria-controls="swiper-wrapper-105267bf3ead58ec2"
+  >
+    <app-product-card [product]="product"></app-product-card>
+  </swiper-slide>
+</swiper-container>

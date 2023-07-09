@@ -17,7 +17,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 })
 export class ProductPageComponent implements OnInit {
   product: any;
-  quantity?: string | number = 1;
+  quantity?: string ;
   ngOnInit(): void {
     this.getProduct();
   }
@@ -44,11 +44,12 @@ export class ProductPageComponent implements OnInit {
     }
   }
 
-  addCart(product: any, quantity?: any) {
+  addCart(product: any, quantity?: string) {
+    console.log(typeof quantity);
     this.cartService
       .cartPost({
         productId: product.id,
-        quantity: 1,
+        quantity: quantity,
       })
       .pipe(
         catchError((error: any) => {
@@ -57,6 +58,7 @@ export class ProductPageComponent implements OnInit {
         })
       )
       .subscribe((res) => {
+        this.getCartProducts();
         this.nzMessage.create('success', `Item added to cart`);
       });
   }

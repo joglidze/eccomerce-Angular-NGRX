@@ -10,8 +10,9 @@ import { ProductResponse } from '../interfaces/product';
 export class CartService extends BaseService {
   cartPost(payload: {
     productId: string;
-    quantity: number;
+    quantity?: string;
   }): Observable<ProductResponse> {
+  
     return this.post<ProductResponse>('cart', payload);
   }
 
