@@ -1,27 +1,24 @@
-# EccomerceRX
+# 🛍️ Angular NgRx E-commerce Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Welcome to the Angular NgRx E-commerce project, a feature-rich web application that allows users to manage categories and products. Users with the email address lukajoglidze12@gmail.com have the ability to perform CRUD operations on products, while other users are considered customers.
 
-## Code scaffolding
+## 🚀 Live Demo
+<h1>Check out the live demo [here](https://64c0287c4b0c4c182dfc5b73--lustrous-rolypoly-c43136.netlify.app/).</h1> 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## ⚙️ Features
+- **User Authentication:** Users can sign in using their email and password to access their account.
+- **Category Management:** Authenticated users can add new product categories to the system.
+- **Product Management:** Authenticated users can add, edit, and delete products within the respective categories.
+- **Customer Interface:** Non-authenticated users can browse and view available products as customers.
+- **Cart:** Customers can add products to their shopping cart while browsing the products.
+- **Checkout:** Customers can proceed to the checkout page to review their cart items and place an order.
+- **State Management with NgRx:** The application uses NgRx for state management, providing a predictable and centralized data store.
 
-## Build
+## 🛠️ Technologies & Tools
+- **Angular:** A powerful JavaScript framework for building dynamic web applications.
+- **NgRx:** A state management library for Angular applications based on RxJS.
+- **HTML & CSS:** For the structure and styling of the application.
+- **Netlify:** A platform for hosting and deploying web applications.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
