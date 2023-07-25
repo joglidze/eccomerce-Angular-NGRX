@@ -21,6 +21,7 @@ export class CategoryComponent implements OnInit {
   categories: any;
   ngOnInit(): void {
     this.categoriesSelect();
+
     this.categoryInState();
   }
 
@@ -35,6 +36,7 @@ export class CategoryComponent implements OnInit {
       .pipe(select(selectCategoryState))
       .subscribe((res) => {
         this.categories = res;
+        this.categories = this.categories.slice(2);
       });
   }
 
@@ -44,17 +46,15 @@ export class CategoryComponent implements OnInit {
       .pipe(
         switchMap((data) => {
           const names = data.map((category) => category);
-        
+
           return of(categoryAction({ name: names }));
         })
       )
       .subscribe((action) => this.store.dispatch(action));
   }
   onDelete(id: number) {
-    
-
     this.categories = this.categories.filter((item: any) => item.id !== id);
-    
+
     this.store.dispatch(deleteCategory({ updateCategories: id }));
     this.store.dispatch(updateCategory({ categories: this.categories }));
   }

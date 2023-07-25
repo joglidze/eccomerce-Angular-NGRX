@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://ljeccomerceapi.onrender.com/',
+  apiUrl: 'http://web-production-114d.up.railway.app/',
 };

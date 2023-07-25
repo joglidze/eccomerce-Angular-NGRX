@@ -12,40 +12,29 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" >Offers</a>
+      <a class="nav-link">Offers</a>
     </li>
     <li class="nav-item">
-      <!-- [nzPopoverVisible]="true" -->
-      <a
-        class="nav-link active"
-        nz-button
-        
-        nz-popover
-        [nzPopoverContent]="contentTemplate"
-        nzPopoverPlacement="bottom"
-      >
-        Brands
-      </a>
+      <a class="nav-link active"> Brands </a>
     </li>
     <li class="nav-item">
       <a class="nav-link">New Articles</a>
     </li>
   </ul>
   <ng-template #contentTemplate>
-    <div class="d-flex">
-      <ul class="navbar-nav m-3">
-        <li><a href="" class="nav-link active">Boots</a></li>
-        <hr />
-        <li 
+    <div>
+      <li><a href="" class="nav-link active w-100">Boots</a></li>
+      <hr />
+      <ul class="navbar-nav m-3 container">
+        <li
           *ngFor="let category of categories"
           (click)="nav(category.name)"
-          
           class="d-flex align-items-center"
         >
           <a class="nav-link">{{ category.name }}</a>
-       
+
           <span
-          appAdmin
+            appAdmin
             nz-icon
             nzType="close"
             nzTheme="outline"

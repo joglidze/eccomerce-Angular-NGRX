@@ -45,10 +45,13 @@ export class AllProductsComponent {
           })
         )
         .subscribe()
+        
     }
   }
 
   filterFunction(products: any) {
+    console.log(this.category);
+    
     this.productss = products.filter((product: any) => {
       return product.category?.name === this.category;
     });
