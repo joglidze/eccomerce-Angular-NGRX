@@ -4,8 +4,7 @@
 
 Welcome to the Angular NgRx E-commerce project, a feature-rich web application that allows users to manage categories and products. Users with the email address lukajoglidze12@gmail.com have the ability to perform CRUD operations on products, while other users are considered customers.
 
-## 🚀 Live Demo
-<h1>Check out the live demo [here](https://lj-eccomerce.vercel.app/home).</h1> 
+
 
 ## ⚙️ Features
 - **User Authentication:** Users can sign in using their email and password to access their account.
